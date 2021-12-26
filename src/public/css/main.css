@@ -1,0 +1,194 @@
+/* .login{
+background: #56ab2f;
+background: -webkit-linear-gradient(to right,  #a8e063,  #56ab2f);
+background: linear-gradient(to right, #a8e063, #56ab2f );
+}
+
+.signup{
+    background: #000428;
+    background: -webkit-linear-gradient(to right,  #004e92,  #000428);
+    background: linear-gradient(to right, #004e92, #000428 );    
+} */
+
+.leftcenter .btn {
+  color: #ffffff;
+}
+
+.table-admin {
+  width: 50%;
+  margin: auto;
+}
+
+.ml-auto,
+.mx-auto {
+  width: 30%;
+}
+
+@media only screen and (max-width: 600px) {
+  .ml-auto,
+  .mx-auto {
+    width: 100%;
+  }
+}
+
+h7 {
+  color: #ffffff;
+  font-size: 50px;
+  font-family: "Poppins", sans-serif !important;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.black {
+  background: rgb(95, 95, 95);
+}
+
+.bg-dark {
+  /* background-color: rgb(233, 233, 233) !important; */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#myInput {
+  background-image: url("../img/searchicon.png");
+  background-position: 10px 14px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+
+#myTable {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ddd;
+  font-size: 18px;
+}
+
+#myTable th,
+#myTable td {
+  text-align: left;
+  padding: 12px;
+}
+
+#myTable tr {
+  border-bottom: 1px solid #ddd;
+}
+
+#myTable tr.header,
+#myTable tr:hover {
+  background-color: #f1f1f1;
+}
+
+th {
+  cursor: pointer;
+}
+
+.nowarptabla {
+  height: 10px;
+  display: inline-block;
+  vertical-align: top !important;
+}
+
+.centrarverticaltabla {
+  vertical-align: top !important;
+}
+
+.centrarNombreEmpresa {
+  /* color: red; */
+  padding-top: 25px;
+}
+.textoLogo {
+  color: white;
+  height: 30px;
+  font-weight: 900;
+}
+
+.anchoKitCrear {
+  max-width: 1600px;
+  margin: auto;
+}
+
+.componentesDelSet {
+  max-width: 1600px;
+  min-height: 80px;
+  margin: auto;
+  text-align: center;
+  align-items: center;
+}
+
+.tarjetaComp {
+  padding: 10px;
+  margin: 10px;
+  height: 240px;
+  width: 170px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+.tarjetaComp2 {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+.contenedorComponentes {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.centrar {
+  text-align: center;
+  align-items: center;
+}
+
+.imagenComponente {
+  width: 120px;
+  height: 120px;
+  margin: 5px;
+  border-radius: 3px;
+}
+.textoTar {
+  margin: 3px;
+  line-height: normal;
+}
+
+
+
+
+.cerrarSet{
+  margin: 10px;
+}
+.popUpSet{
+  position: absolute;
+ 
+  z-index: 6;
+  background-color: white;
+  border-radius: 6px;
+ 
+  padding: 35px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+ 
+  
+  top: 25%;
+  left: 50%;
+  margin-top: -100px; /* Negative half of height. */
+  margin-left: -250px; /* Negative half of width. */
+
+
+
+
+
+}
+
+@media only screen and (max-width: 600px) {
+
+  .popUpSet {
+    width: 271px;
+    right: 0 !important;
+    left: 291px !important;
+  }
+}

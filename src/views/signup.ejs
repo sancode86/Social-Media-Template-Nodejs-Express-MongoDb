@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>        
+    <%- include('partials/headreglog') %>
+   <script src="..\js\checkpassword.js"></script>
+</head>
+<body class="signup">
+    
+<div class="container">
+    <div class="col-sm-6 mx-auto text-center">
+        <div class="card mt-5">
+            <div class="card-body">
+                <h1 class="text-center"><span class="fa fa-sign-in"></span> Signup</h1>
+
+                <% if (message.length > 0){ %>   
+                    <div class="alert alert-danger">
+                    <%= message %>   
+                    </div>
+                <% }%> 
+
+                        <form action="/signup" method="post" onchange="register()" onkeypress="register()" onkeyup="register()">
+                            <div class="form-group">                                 
+                                    <input type="email" name="email" class="form-control" placeholder="E-Mail" required>
+                            </div>
+                            <div class="form-group">                            
+                                <input type="password" name="password" class="form-control" placeholder="Password" id="password" required>
+                            </div>
+                            <div class="form-group">                            
+                                <input type="password" name="confirm_password" class="form-control" placeholder="Confirm Password" id="confirm_password"  required>
+                            </div>                                                
+                            <input type="submit" class="btn btn-dark btn-lg" id="submit" disabled>  
+                        </form>          
+
+                    <hr>
+                    <div class="text-center">
+                        <p>Have account? <a href="/login">Login</a></p>
+                        <p>Or go <a href="/">Home</a></p>
+                    </div>   
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

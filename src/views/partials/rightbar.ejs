@@ -1,0 +1,179 @@
+<div class="right-bar">
+
+    <div class="rightbar-title">
+        <a href="javascript:void(0);" class="right-bar-toggle float-right">
+            <i class="dripicons-cross noti-icon"></i>
+        </a>
+        <h5 class="m-0">Preferencias</h5>
+    </div>
+
+    <div class="rightbar-content h-100" data-simplebar>
+
+        <div class="p-3">
+            <div class="alert alert-warning" role="alert">
+                <strong>Personalizar </strong> apariencia del sistema, colores y esquema general.
+            </div>
+
+                         
+            <form action="/guardar-preferencias-usuario/<%=user._id%>" method="POST">
+
+                <h5 class="mt-3">Variantes de Color</h5>
+                <hr class="mt-1" />
+
+
+                <div class="custom-control custom-switch mb-1">
+                    <input onclick="cambiarmodocolor();" type="radio" 
+                    <%if (user.varColorModoClaro == "") {%>                
+                        <%='checked'%>                
+                    <% }%>
+                    <%if (user.varColorModoClaro == "disabled") {%>                
+                        <%='unchecked'%>                
+                    <% }%>
+                    class="custom-control-input" id="variantecolorclaro" name="variantesc"/>
+                    <label class="custom-control-label" for="variantecolorclaro">Modo Claro</label>
+                </div>
+
+
+                <div class="custom-control custom-switch mb-1">
+                    <input onclick="cambiarmodocoloroscuro();" type="radio"                     
+                    <%if (user.varColorModoOscuro == "") {%>                
+                        <%='checked'%>                
+                    <% }%>
+                    <%if (user.varColorModoOscuro == "disabled") {%>                
+                        <%='unchecked'%>                
+                    <% }%>             
+                    class="custom-control-input" id="variantecoloroscuro" name="variantesc" />
+                    <label class="custom-control-label" for="variantecoloroscuro">Modo Oscuro</label>
+                </div>
+
+
+                <div style="display: none;">
+                    <input class="form-check-input " id="varColorModoClaroid" type="text" name="varColorModoClaro"/>               
+                    <input class="form-check-input " id="varColorModoOscuroid" type="text" name="varColorModoOscuro"/> 
+                </div>
+
+
+                <h5 class="mt-4">Modo Barra Izquierda</h5>
+                <hr class="mt-1" />
+         
+
+                <div class="custom-control custom-switch mb-1">
+                    <input type="radio" 
+                    <%if (user.barraCompact == "fixed") {%>                
+                        <%='checked'%>                
+                    <% }%>
+                    <%if (user.barraCompact != "fixed") {%>                
+                        <%='unchecked'%>                
+                    <% }%> 
+                    
+                    class="custom-control-input" id="fizedcheck" name="barraCompact" value="fixed"/>
+                    <label class="custom-control-label" for="fizedcheck">Fija</label>
+                </div>
+
+                <div class="custom-control custom-switch mb-1">
+                    <input type="radio"  
+                    <%if (user.barraCompact == "condensed") {%>                
+                        <%='checked'%>                
+                    <% }%>
+                    <%if (user.barraCompact != "condensed") {%>                
+                        <%='unchecked'%>                
+                    <% }%> 
+                    
+                    id="condensedcheck" class="custom-control-input" name="barraCompact" value="condensed"/>
+                    <label class="custom-control-label" for="condensedcheck">Compacta</label>
+                </div>
+
+                <div class="custom-control custom-switch mb-1">
+                    <input type="radio" 
+                    <%if (user.barraCompact == "scrollable") {%>                
+                        <%='checked'%>                
+                    <% }%>
+                    <%if (user.barraCompact != "scrollable") {%>                
+                        <%='unchecked'%>                
+                    <% }%> 
+                    
+                    id="scrollablecheck" class="custom-control-input" name="barraCompact" value="scrollable"/>
+                    <label class="custom-control-label" for="scrollablecheck">Navegable</label>
+                </div>
+
+ 
+                <h5 class="mt-4">Color Barra Izquierda</h5>
+                <hr class="mt-1" />
+      
+
+                <div class="custom-control custom-switch mb-1">
+                    <input type="radio" 
+                    <%if (user.barraIzqTema == "default") {%>                
+                        <%='checked'%>                
+                    <% }%>
+                    <%if (user.barraIzqTema != "default") {%>                
+                        <%='unchecked'%>                
+                    <% }%> 
+                    
+                    
+                    class="custom-control-input" id="defaultcheck" name="barraIzqTema" value="default"/>
+                    <label class="custom-control-label" for="defaultcheck">Colorida</label>
+                </div>
+
+                <div class="custom-control custom-switch mb-1">
+                    <input type="radio" 
+                    <%if (user.barraIzqTema == "light") {%>                
+                        <%='checked'%>                
+                    <% }%>
+                    <%if (user.barraIzqTema != "light") {%>                
+                        <%='unchecked'%>                
+                    <% }%> 
+                    
+                    
+                    id="claracheck" class="custom-control-input" name="barraIzqTema" value="light"/>
+                    <label class="custom-control-label" for="claracheck">Clara</label>
+                </div>
+
+                <div class="custom-control custom-switch mb-1">
+                    <input type="radio" 
+                    <%if (user.barraIzqTema == "dark") {%>                
+                        <%='checked'%>                
+                    <% }%>
+                    <%if (user.barraIzqTema != "dark") {%>                
+                        <%='unchecked'%>                
+                    <% }%> 
+                    
+                    
+                    id="oscuracheck" class="custom-control-input" name="barraIzqTema" value="dark"/>
+                    <label class="custom-control-label" for="oscuracheck">Oscura</label>
+                </div>
+
+           
+                <button  type="submit" class="btn btn-success btn-block mt-4">Guardar Cambios</button>
+            </form>
+
+            <!-- <a href="https://themes.getbootstrap.com/product/hyper-responsive-admin-dashboard-template/"
+                class="btn btn-danger btn-block mt-3" target="_blank"><i class="mdi mdi-basket mr-1"></i> Purchase Now</a> -->
+        </div> <!-- end padding-->
+
+    </div>
+</div>
+
+<div class="rightbar-overlay"></div>
+
+
+<script>
+
+   function cambiarmodocolor(){
+    var checky = document.getElementById("variantecolorclaro");
+    if (checky.checked == true){      
+                document.getElementById("varColorModoClaroid").value = "";
+                document.getElementById("varColorModoOscuroid").value = "disabled";
+                        }
+    }
+
+   function cambiarmodocoloroscuro(){
+    var checky = document.getElementById("variantecoloroscuro");
+    if (checky.checked == true){      
+                document.getElementById("varColorModoClaroid").value = "disabled";
+                document.getElementById("varColorModoOscuroid").value = "";
+                        }
+    }   
+
+
+</script>

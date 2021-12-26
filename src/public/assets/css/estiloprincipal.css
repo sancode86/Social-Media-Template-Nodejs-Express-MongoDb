@@ -1,0 +1,234 @@
+
+/* Adaptacion mobile */
+
+.nav-user {
+    padding: calc(31px / 2) 31px calc(31px / 2) 31px!important;}
+
+    @media (max-width: 767.98px){
+        .account-user-avatar {
+            display: block !important;
+        }
+
+        .cancelarmobile{
+          display: block !important;
+        }
+
+        .botonsubirimagen {
+          width: 93% !important;
+        }
+
+        .justificarderecha{        
+          margin-bottom: 15px;
+        }
+
+        .modal {
+          overflow: visible !important;
+          width: 100% !important;
+          margin-left: auto !important;
+          margin-right: auto !important;
+          left: 0% !important;
+          margin-top: 77px !important;
+      }
+   
+
+
+    }
+
+    @media (max-width: 375px){
+        .account-user-avatar {
+        display: block !important;
+            }
+
+            .cancelarmobile{
+
+              display: block !important;
+            }
+
+            .botonsubirimagen {
+              width: 93% !important;}
+
+              .justificarderecha{        
+                margin-bottom: 15px;
+              }
+
+    }
+
+
+    .table td, .table th {
+        vertical-align: middle !important;
+    }
+
+        /* Scrollbar oscura */
+    * {
+        scrollbar-width: thin;
+        scrollbar-color: #313a46 black;
+      }
+      *::-webkit-scrollbar {
+        width: 12px;
+      }
+      *::-webkit-scrollbar-track {
+        background: #d6d6d6;
+      }
+      *::-webkit-scrollbar-thumb {
+        background-color: #313a46;
+        border-radius: 2px;
+        border: 3px solid #313a40;
+      }
+
+.botonsubirimagen{
+  width: 48% ;
+  padding: 5px !important;
+
+}
+
+/* para que las imagenes listadas de los articulos no se vean distintas */
+.mr-3, .mx-3 {
+  max-width: 50px;
+}
+
+.graficotipoprod{
+  margin: auto;
+  width: 85% !important;
+  height: 50% !important;
+}
+
+
+.testinga{
+  width: 85% !important;
+}
+
+.justificarderecha{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.margencoloresradios{
+  margin: 22px !important;
+}
+
+div.results input, div.results button {
+	height: 50px;
+	width: 104px;
+}
+
+div.results button {
+	background-color: #fa5c7c;
+	color: #fff;
+	border: 1px solid #fa5c7c;
+}
+
+div.results input {
+	background-color: #8bc34a;
+	color: #fff;
+	border: 1px solid #8bc34a;
+}
+
+#plus, #minus, #by, #devide, #percent {
+	background-color: #999;
+	color: #fff;
+	border: 1px solid #999;
+	font-size: 16px;
+}
+
+body div.mycalc {
+	text-align: center;
+	width: 214px;
+	margin: 0 auto;
+}
+.botoncalculadora {
+  border-radius: 3px;
+    width: 50px;
+    height: 50px;
+    margin: 2px 0;
+    background-color: #d2d2d2;
+    border: 1px solid #d2d2d2;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.inputcalculadora {
+  border-radius: 3px;
+    height: 50px;
+    width: 98%;
+    background-color: #999;
+    color: #fff;
+    padding: 12px 20px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    box-sizing: border-box;
+    /* border-radius: 4px; */
+    border: 1px solid #999;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+.cerrarcalculadora {
+    background-color: transparent;
+    padding-right: 11px;
+    padding-top: 6px;
+    font-size: 19px;
+    border: 0px transparent;
+    color: #999999;
+}
+.modal{
+ 
+ 
+  margin-left: auto !important;
+  margin-right: auto !important;
+  left: 25% ;
+  margin-top: 132px;
+  overflow: hidden !important;
+  width: 50% ;
+}
+.bordermodal{
+  border: #9e9e9e 1px solid !important;
+  -webkit-box-shadow: 5px 5px 50px 25px rgba(0,0,0,0.23); 
+  box-shadow: 5px 5px 50px 25px rgba(0,0,0,0.23);
+}
+.close{
+  cursor: pointer;
+}
+.tamañotexto{
+  font-size: 18px;
+  color:rgb(63, 62, 62);
+}
+
+#calculadora {
+  border-radius: 3px;
+  position: absolute;
+  z-index: 9;
+  background-color: #f1f1f1;
+  text-align: center;
+  border: 1px solid #d3d3d3;
+}
+
+#calculadoraheader {
+  padding: 10px;
+  cursor: move;
+  z-index: 10;
+  background-color: #2196F3;
+  color: #fff;
+}
+.texto-right{
+  text-align: right !important;
+}
+.textoLogo{
+  color: white;
+ height: 30px;
+  font-weight: 900;
+}
+.pantallaPrincipal{
+  background: white url(/img/logo.png) !important;
+  /* background-blend-mode:; */
+  background-repeat: no-repeat !important;
+  width: 30px !important;
+  height: 30px !important;
+  background-size: 368px !important;
+  background-position: center !important;
+  background-blend-mode: luminosity;
+}
+
+.admintable{
+  max-width: 1600px !important;
+  margin: auto !important;
+}

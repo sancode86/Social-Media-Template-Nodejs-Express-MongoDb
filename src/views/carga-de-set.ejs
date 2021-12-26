@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8" />
+      <title>Carga de Set | app</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta content="icheck | Software Argentina" name="description" />
+      <meta content="icheck" name="author" />
+      <!-- App favicon -->
+      <link rel="shortcut icon" href="assets/images/favicon.ico">
+      <!-- third party css -->
+      <link href="assets/css/vendor/dataTables.bootstrap4.css" rel="stylesheet" type="text/css" />
+      <link href="assets/css/vendor/responsive.bootstrap4.css" rel="stylesheet" type="text/css" />
+      <link href="assets/css/vendor/buttons.bootstrap4.css" rel="stylesheet" type="text/css" />
+      <link href="assets/css/vendor/select.bootstrap4.css" rel="stylesheet" type="text/css" />
+      <!-- third party css end -->
+      <script src="assets/js/jquery.min.js"></script>
+      <script src="assets/js/vendor/html2canvas.js"></script>
+      <!-- App css -->
+      <script src="assets/js/select2/select2.js"></script>
+      <link rel="stylesheet" href="assets/css/estiloprincipal.css">
+      <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+      <link href="assets/css/app-dark.min.css" rel="stylesheet" type="text/css" <%=user.varColorModoOscuro%> />
+      <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" <%=user.varColorModoClaro%>/>
+   </head>
+   <body class="loading" data-layout-config='{}'data-leftbar-compact-mode="<%=user.barraCompact%>" data-leftbar-theme="<%=user.barraIzqTema%>">
+  
+      <%- include('partials/barra') %>
+      <div class="content-page">
+         <div class="content">
+
+            <%- include('partials/topbar') %>      
+      
+
+            <div class="container-fluid">
+                <div class="row">
+                   <div class="col-12">
+                      <div class="page-title-box">
+                         <div class="page-title-right">
+                            <ol class="breadcrumb m-0">
+                               <li class="breadcrumb-item"><a href="javascript: void(0);">Componentes</a></li>
+                               <li class="breadcrumb-item"><a href="javascript: void(0);">Inventario</a></li>
+                               <li class="breadcrumb-item active">Carga de Set</li>
+                            </ol>
+                         </div>
+                         <h4 class="page-title">Informacion del Set</h4>
+                      </div>
+                   </div>
+                </div>
+                <form action="/agregar-set" method="POST" enctype="multipart/form-data">
+                    
+                   <div class="row">
+                      <div class="col-12">
+                         <div class="card">
+                            <div class="card-body">
+                               <h4 class="header-title">Crear un nuevo Set
+                                  <a href="#" data-toggle="tooltip" title="
+                                     Completar el formulario para cargar un nuevo SET en el sistema. El campo código debe ser único.
+                                     "> <i style="color: #6c757d;" class="mdi mdi-help-circle"></i> </a>
+                               </h4>
+                               <ul class="nav nav-tabs nav-bordered mb-3">
+                                  <li class="nav-item">
+                                     <a href="#input-masks-general" data-toggle="tab" aria-expanded="false" class="nav-link active">
+                                     General
+                                     </a>
+                                  </li>
+                                  <li class="nav-item">
+                                     <a href="#input-masks-costo" data-toggle="tab" aria-expanded="true" class="nav-link">
+                                     Costo
+                                     </a>
+                                  </li>
+                                  <li class="nav-item">
+                                     <a href="#input-masks-imagen" data-toggle="tab" aria-expanded="true" class="nav-link">
+                                     Imágen
+                                     </a>
+                                  </li>
+                               </ul>
+                               <!-- end nav-->
+                               <div class="tab-content">
+                                  <div class="tab-pane show active" id="input-masks-general">
+                                     <div class="row">
+                                        <div class="col-md-6">
+                                           <div class="form-group">
+                                              <label>Código</label>
+                                              <input required onkeyup="SincractividadesRecientes()" type="text" name="codigoSet" class="form-control" id="campocodigo" >
+                                              <span class="font-13 text-muted">Ejemplo: 5020030B</span>
+                                           </div>
+                                           <div class="form-group">
+                                              <label>Nombre</label>
+                                              <input required onkeyup="SincractividadesRecientes()" type="text" name="nombreSet" class="form-control" id="camponombre" >
+                                              <span class="font-13 text-muted">Nombre del set instrumental</span>
+                                           </div>
+                                           <div class="form-group">
+                                              <label>Medida</label>
+                                              <input type="text" name="medida" class="form-control" 
+                                                 value="0" maxlength="15" 
+                                                 onkeydown="validateNumber(event);">                  
+                                              <br>
+                                              <select name="medidaUnidad" class="form-control">
+                                                 <option disabled selected>Seleccionar unidad</option>
+                                                 <option value="-">Sin especificar</option>
+                                                 <optgroup label="Longitud">
+                                                    <option value="Decímetro">Decímetro</option>
+                                                    <option value="Metro">Metro</option>
+                                                 </optgroup>
+                                                 <optgroup label="Superficie">
+                                                    <option value="Decímetro²">Decímetro²</option>
+                                                    <option value="Metro²">Metro²</option>
+                                                    <option value="Centímetro²">Centímetro²</option>
+                                                    <option value="Milímetro²">Milímetro²</option>
+                                                 </optgroup>
+                                                 <optgroup label="Volumen">
+                                                    <option value="Metro³">Metro³</option>
+                                                    <option value="Centímetro³">Centímetro³</option>
+                                                    <option value="Milímetro³">Milímetro³</option>
+                                                 </optgroup>
+                                              </select>
+                                              <!-- <span class="font-13 text-muted">Ejemplo:</span> -->
+                                           </div>
+                                           <div class="form-group">
+                                              <label>Peso</label>
+                                              <input type="text" name="peso" class="form-control" 
+                                                 value="0" maxlength="15"
+                                                 onkeydown="validateNumber(event);">
+                                              <br>
+                                              <select name="pesoUnidad" class="form-control">
+                                                 <option disabled selected>Seleccionar unidad</option>
+                                                 <option value="-">Sin especificar</option>
+                                                 <option value="Kilogramo">Kilogramo</option>
+                                                 <option value="Gramo">Gramo</option>
+                                                 <option value="Decigramo">Decigramo</option>
+                                                 <option value="Centigramo">Centigramo</option>
+                                              </select>
+                                           </div>
+                                        </div>
+                                        <!-- end col -->
+                                        <div class="col-md-6">
+                                           <label>Origen</label>                                                              
+                                           <br>
+                                           <select name="origen" class="form-control">
+                                              <option disabled selected>Seleccionar Origen</option>
+                                              <option value="-">Sin especificar</option>
+                                              <option value="Fabricación Propia">Fabricación Propia</option>
+                                              <option value="Terceros">Terceros</option>
+                                           </select>
+                                           <br>
+                                           <label>Tipo de Set</label>                                                              
+                                           <br>
+                                           <select name="tipoArticulo" class="form-control">
+                                              <option disabled selected>Seleccionar Tipo</option>
+                                              <option value="-">Sin especificar</option>
+                                              <option value="Set1">Set tipo 1</option>
+                                              <option value="Set2">Set tipo 2</option>
+                                              <option value="Set3">Set tipo 3</option>
+                                           </select>
+                                           <br>
+                                           <div class="form-group">
+                                              <label>Código de Barras</label>
+                                              <input type="text" name="codbarraSet" class="form-control">
+                                              <!-- <span class="font-13 text-muted">bla bla</span> -->
+                                           </div>
+                                           <br>
+                                           <div class="text-right">
+                                              <button onclick="actualizarinfoimagen()" type="submit" class="btn btn-success" id="botonagregar">
+                                                Crear nuevo Set
+                                              </button>
+                                           </div>
+                                        </div>
+                                     </div>
+                                     <!-- end row -->                      
+                                  </div>
+                                  <!-- end preview-->
+                                  <!-- TAB DE COSTO !!!!!!!!!!! -->                                        
+                                  <div class="tab-pane" id="input-masks-costo">
+                                     <div class="row">
+                                        <div class="col-md-6">
+                                           <div class="form-group">
+                                              <label>Costo de Producción/Compra</label>
+                                              <input name="costoProduccion" type="text" class="form-control" 
+                                                 value="0" maxlength="15"
+                                                 onkeydown="validateNumber(event);">
+                                              <!-- <span class="font-13 text-muted">bla bla</span> -->
+                                           </div>
+                                           <div class="form-group">
+                                              <label>Costo Moneda</label>                                                                    
+                                              <br>
+                                              <select name="costoProduccionmoneda" class="form-control">
+                                                 <option disabled selected>Seleccionar unidad</option>
+                                                 <option value="-">Sin especificar</option>
+                                                 <option value="ARS$">Peso Argentino (ARS$)</option>
+                                                 <option value="U$S">Dólar Estadounidense (U$S)</option>
+                                                 <option value="€">Euro (€)</option>
+                                                 <option value="¥">Yen (¥)</option>
+                                              </select>
+                                           </div>
+                                           <div class="form-group">
+                                              <label>Precio de Venta</label>
+                                              <input name="precioVenta" type="text" class="form-control" 
+                                                 value="0" maxlength="15"
+                                                 onkeydown="validateNumber(event);">
+                                           </div>
+                                           <div class="form-group">
+                                              <label>Precio Moneda</label>                                                                    
+                                              <br>
+                                              <select name="precioVentaMoneda" class="form-control">
+                                                 <option disabled selected>Seleccionar unidad</option>
+                                                 <option value="-">Sin especificar</option>
+                                                 <option value="ARS$">Peso Argentino (ARS$)</option>
+                                                 <option value="U$S">Dólar Estadounidense (U$S)</option>
+                                                 <option value="€">Euro (€)</option>
+                                                 <option value="¥">Yen (¥)</option>
+                                              </select>
+                                           </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                           <div class="row">
+                                              <div class="col-md-6">
+                                                 <div class="text center">                                                                           
+                                                 </div>
+                                              </div>
+                                              <div class="col-md-6">
+                                                 <div class="text center">  
+                                                    <label for="switch6" data-on-label="Si" data-off-label="No"></label> <br>
+                                                 </div>
+                                              </div>
+                                           </div>
+                                        </div>
+                                     </div>
+                                  </div>
+                                  <!-- TAB DE IMAGEN !!!!!!!!!!! -->
+                                  <div class="tab-pane" id="input-masks-imagen">
+                                     <div class="row">
+                                        <div class="col-md-6">
+                                           <div class="form-group">
+                                              <label>Imágen del Set
+                                              <a href="#" data-toggle="tooltip" title="
+                                                 Seleccionar imágen principal del artículo. De no especificar una se establecerá una predeterminada.
+                                                 "> <i style="color: #6c757d;" class="mdi mdi-help-circle"></i> </a>
+                                              </label>
+                                              <br>
+                                              <input onchange="actualizarinfoimagen(); vistapreviadelaimagen(this);" id="campoimagen" name="imagenarticulo" type="file" class="form-control btn btn-primary botonsubirimagen" accept="image/x-png,image/gif,image/jpeg">
+                                              <br>
+                                              <span class="font-13 text-muted">Subir imágen del set al servidor</span>
+                                           </div>
+                                           <img id="vistaprevia" src="#" alt="Vista Previa imágen" style="display: none;"/>
+                                        </div>
+                                        <!-- end col -->                                               
+                                     </div>
+                                  </div>
+                                  <!-- end tab-content IMAGEN-->
+                               </div>
+                            </div>
+                         </div>
+                      </div>
+                   </div>
+                   <div style="display: none;">
+                    <input type="text" name="componentesSet" value="" class="form-control" id="componentesSet"> 
+                      <input type="text" name="imgartUrl" value="" class="form-control" id="imagenasubir"> 
+                      <input type="text" text="yeah" name="responsable" class="form-control" value="<%=user.email %>">
+                      <input type="text" name="icono" class="form-control" value="mdi-directions">
+                      <input type="text" name="iconoActividadColor" class="form-control" value="bg-info-lighten">
+                      <input type="text" name="textoActividadColor" class="form-control" value="text-info">
+                      <input type="text" name="asunto" class="form-control" value="Nuevo Set Cargado">
+                      <input type="text" name="descripcion" class="form-control" id="campocodigomasnombre">  
+                   </div>
+                </form>
+             </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+             <div class="row">
+                <div class="ml-3">                    
+                      <h4 class="page-title">Componentes del Set</h4>             
+                </div>
+             </div> 
+
+             <div class="componentesDelSet">
+                 <div class="card centrar">
+                     <div class="card-body">
+                            <div id="componentesDelSetId" class="contenedorComponentes">
+
+                                <!-- componentes -->
+
+
+                            </div>
+                     </div>
+                 </div>
+             </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+               <div id="previewImage" style="display: none;"></div>
+             
+                     <div class="card anchoKitCrear">
+                        <div class="card-body">            
+                           <h4 class="header-title">Agregar artículos al set</h4>
+                           <p class="text-muted font-14">
+                              Mostrando todos los artículos de la base de datos.
+                           </p>                                             
+                     
+                              <div class="tab-pane show active" id="buttons-table-general">
+                                 <table id="datatable-buttons" class="table table-striped dt-responsive nowrap w-100">
+                                    <thead>
+                                       <tr>
+                                          <th>Imágen</th>
+                                          <th>Código</th>
+                                          <th>Nombre</th>
+                                          <th>Medida</th>
+                                          <th>Unidad</th>
+                                          <th>Peso</th>
+                                          <th>Unidad</th>
+                                          <th>Tipo</th>
+                                          <th>Agregar</th>                                         
+                                       </tr>
+                                    </thead>
+                                    <tbody>
+                                       <% for(var i = 0; i<articulosobj.length; i++){  %>          
+                                       <tr>
+                                          <td><img src="/uploads/<%=articulosobj[i].imgartUrl%>" alt="contact-img" title="contact-img" class="rounded mr-3" height="48" /></td>
+                                          <td><%=articulosobj[i].codigoArticulo%></td>
+                                          <td><%=articulosobj[i].nombre%></td>
+                                          <td><%=articulosobj[i].medida%></td>
+                                          <td><%=articulosobj[i].medidaUnidad%></td>
+                                          <td><%=articulosobj[i].peso%></td>
+                                          <td><%=articulosobj[i].pesoUnidad%></td>
+                                          <td><%=articulosobj[i].tipoArticulo%></td>
+                                          <p style="display: none;" id="imagenComponente<%=i%>" ><%=articulosobj[i].imgartUrl%></p>
+                                          <td>
+                                              
+                                            <button onclick="agregarArticuloAlSet('<%=articulosobj[i].nombre%>', '<%=articulosobj[i].codigoArticulo%>', '<%=i%>')" class="btn btn-success" id="agregarArticuloAlSet">
+                                                Agregar
+                                                </button>
+                                          </td>                  
+                                       </tr>
+                                       <%}%> 
+                                    </tbody>
+                                 </table>
+                     </div>           
+                  </div>
+               </div>
+            </div>
+  
+         </div>  
+         <%- include('partials/footer') %>
+      </div>   
+      </div>
+      <%- include('partials/rightbar') %>
+   </body>
+   <script>
+       function vistapreviadelaimagen(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#vistaprevia')
+                        .attr('src', e.target.result)
+                        .width(200)
+                        .height(200);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+                vista = document.getElementById("vistaprevia");
+                vista.style.display = ("block");
+            }
+        }
+
+
+            function SincractividadesRecientes()
+            {
+              var CampoCodigo = document.getElementById('campocodigo');
+              var CampoNombre = document.getElementById('camponombre');
+              var CampoCodigoMasNombre = document.getElementById('campocodigomasnombre');
+
+              CampoCodigoMasNombre.value = "creó el artículo Cod.: " + CampoCodigo.value + " " + "Nombre: " + CampoNombre.value;
+            }
+
+            function actualizarinfoimagen(){   
+                var chequear = document.getElementById('campoimagen').value;
+                
+                if( chequear != ""){
+           
+                var valorcrudo = document.getElementById('campoimagen').value;
+                var splits = valorcrudo.split('fakepath\\');
+                var valorsinfake = splits[1];                
+                var valoraguardar = document.getElementById('imagenasubir');
+                valoraguardar.value =  ((Date.now()/10000)).toFixed(0) + valorsinfake;}
+
+                if( chequear == ""){
+                    var valoraguardar = document.getElementById('imagenasubir');
+                    valoraguardar.value = "noimgdefault01.jpg";
+                }                               
+            }
+      
+          $(document).ready(function(){
+              
+              var element = $("#datatable-buttons"); // global variable
+              var getCanvas; // global variable
+              
+              $("#btn-Convert-Html2Image").on('click', function () {
+      
+                      html2canvas(element, {
+                      onrendered: function (canvas) {
+                          $("#previewImage").append(canvas);
+                              getCanvas = canvas;                
+                              
+                              var imgageData = getCanvas.toDataURL("image/png");
+                                  // Now browser starts downloading it instead of just showing it
+                                  var newData = imgageData.replace(/^data:image\/png/, "data:application/octet-stream");
+                                  $("#btn-Convert-Html2Image").attr("download", "icheck-imagen-consulta.png").attr("href", newData);                
+                              }            
+                          });    
+                      });
+                  });
+   </script>
+   <!-- bundle -->
+   <script src="assets/js/vendor.min.js"></script>
+   <script src="assets/js/app.min.js"></script>
+   <!-- third party js -->
+   <script src="assets/js/vendor/jquery.dataTables.min.js"></script>
+   <script src="assets/js/vendor/dataTables.bootstrap4.js"></script>
+   <script src="assets/js/vendor/dataTables.responsive.min.js"></script>
+   <script src="assets/js/vendor/responsive.bootstrap4.min.js"></script>
+   <script src="assets/js/vendor/dataTables.buttons.min.js"></script>
+   <script src="assets/js/vendor/buttons.bootstrap4.min.js"></script>
+   <!-- <script src="assets/js/vendor/buttons.html5.min.js"></script>
+   <script src="assets/js/vendor/buttons.flash.min.js"></script>
+   <script src="assets/js/vendor/buttons.print.min.js"></script>
+   <script src="assets/js/vendor/dataTables.keyTable.min.js"></script>
+   <script src="assets/js/vendor/dataTables.select.min.js"></script> -->
+   <!-- third party js ends -->
+   <!-- demo app -->
+   <script src="assets/js/vendor/buttons.print.min.js"></script>
+   <script src="assets/js/pages/demo.datatable-init.js"></script>
+   <!-- end demo js-->
+
+
+
+
+
+
+
+
+<script>
+
+var componentesSetArrayASubir = document.getElementById("componentesSet");
+var componentesSet = [];
+var componentesDelSetDiv = document.getElementById("componentesDelSetId");
+chequearSiSetVacio();
+function agregarArticuloAlSet(nombre, codigo, imagen){  
+    
+    var rutaImagen =  document.getElementById("imagenComponente" + imagen).innerHTML;
+    var componente = {    
+        "nombre": nombre,
+        "codigo": codigo,
+        "imagen": rutaImagen,  
+        "usadoEnCirugia": "no"                                                       
+        };
+    componentesSet.push(componente);  
+    console.log(componentesSet)
+    dibujarComponentesDelSet();
+    chequearSiSetVacio();
+    actualizarArraySet();
+}
+
+function dibujarComponentesDelSet(){
+componentesDelSetDiv.innerHTML = "";
+    for(var i = 0; i<componentesSet.length; i++){
+        var divParaComponente = document.createElement("div");
+        divParaComponente.setAttribute("class", "tarjetaComp");  
+        divParaComponente.setAttribute("id", "div" + i);  
+        componentesDelSetDiv.appendChild(divParaComponente);  
+
+        var divCreado = "div" + i;
+
+       var divCreadoId =  document.getElementById(divCreado)
+
+       var texto1 = document.createElement("p");
+       texto1.innerHTML = componentesSet[i].nombre;   
+       texto1.setAttribute("class", "textoTar");       
+        divCreadoId.appendChild(texto1);   
+
+
+        var texto2 = document.createElement("p");
+        texto2.innerHTML = componentesSet[i].codigo;   
+        texto2.setAttribute("class", "textoTar");       
+        divCreadoId.appendChild(texto2);   
+
+
+        var crearImagen = document.createElement("img");
+        crearImagen.src = "uploads/" + componentesSet[i].imagen;   
+        crearImagen.setAttribute("class", "imagenComponente");       
+        divCreadoId.appendChild(crearImagen);   
+
+
+        var botonSacarComponente = document.createElement("button");
+        botonSacarComponente.innerHTML = "Quitar";   
+        botonSacarComponente.setAttribute("class", "btn btn-danger");  
+        botonSacarComponente.setAttribute("onclick", "sacarComponenteDelSet(" + i + ");");      
+        divCreadoId.appendChild(botonSacarComponente);  
+
+    }
+    chequearSiSetVacio();
+    actualizarArraySet();
+}
+
+function sacarComponenteDelSet(i){   
+    componentesSet.splice(i,1);
+    dibujarComponentesDelSet();
+    chequearSiSetVacio();
+    actualizarArraySet();
+}
+
+function chequearSiSetVacio(){
+    if(componentesSet.length == 0){
+        componentesDelSetDiv.innerHTML = "";  
+        var textoVacio = document.createElement("h6");  
+        textoVacio.innerHTML = "(Set sin componentes)";   
+        componentesDelSetDiv.appendChild(textoVacio);     
+    }
+}
+
+
+function actualizarArraySet(){
+    componentesSetArrayASubir.value = JSON.stringify(componentesSet)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EDIT</title>  
+
+    <%- include('partials/headprofile') %>
+
+</head>
+<div class="container">
+    <div class="row">    
+        <div class="col-md-5 offset-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <form action="/edit/<%=task._id %> " method="POST">                 
+                        <div class="form-group">
+                            <input type="text" name="title" placeholder="Escribir Titulo" class="form-control" value="<%=task.title%> "></input>
+                        </div>
+                        <div class="form-group">
+                          <textarea name="description" cols="80" class="form-control" placeholder="Descripcion"><%=task.description%></textarea>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="valor" placeholder="Escribir valor" class="form-control" value="<%=task.valor%> "></input>
+                        </div>        
+                        <button type="submit" class="btn btn-primary btn-block">
+                            Modificar
+                        </button>        
+                    </form>
+                </div>
+            </div>
+        </div>    
+    </div>   
+    </div>

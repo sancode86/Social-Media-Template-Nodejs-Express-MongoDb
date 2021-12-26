@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+
+<head>
+        <meta charset="utf-8" />
+        <title>Consulta enviada | app</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="icheck | Software Argentina" name="description" />
+        <meta content="icheck" name="author" />
+        <!-- App favicon -->
+        <link rel="shortcut icon" href="assets/images/favicon.ico">
+        
+        <!-- App css -->
+        <link rel="stylesheet" href="assets/css/estiloprincipal.css">
+        <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/app-dark.min.css" rel="stylesheet" type="text/css" <%=user.varColorModoOscuro%> />
+        <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" <%=user.varColorModoClaro%>/>
+    </head>
+
+    <body class="loading" data-layout-config='{}'data-leftbar-compact-mode="<%=user.barraCompact%>" data-leftbar-theme="<%=user.barraIzqTema%>">
+        <!-- Begin page -->
+        
+
+        <%- include('partials/barra') %>
+
+            <!-- ============================================================== -->
+            <!-- Start Page Content here -->
+            <!-- ============================================================== -->
+
+            <div class="content-page">
+                <div class="content">
+                    <!-- Topbar Start -->
+                    <%- include('partials/topbar') %>
+                    <!-- end Topbar -->
+
+           
+
+
+
+
+
+                    <!-- Start Content-->
+                    <div class="container-fluid">
+                        
+                        <!-- start page title -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box">
+                                    <div class="page-title-right">
+                                        <ol class="breadcrumb m-0">
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">General</a></li>
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Soporte</a></li>
+                                        
+                                        </ol>
+                                    </div>
+                                    <h4 class="page-title">Envio de consulta</h4>
+                                </div>
+                            </div>
+                        </div>     
+                        <!-- end page title --> 
+                      
+           
+                  
+                        <div class="row" style="width: 70%; margin: auto;">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body text-center" >
+                                        <br>
+                                        <br>
+                                        <h4 class="header-title">¡La consulta fué enviada!</h4>
+                                        <p class="text-muted font-14">
+                                            Le responderemos lo antes posible. Muchas gracias.
+                                        </p>
+                                        <br>
+                                        <a href="panel"> <button class="btn btn-primary" >
+                                            Aceptar
+                                        </button></a>
+                                        <br>
+                                        <br>
+
+
+
+                                        </div>                                        
+                                    </div>                                       
+                                </div>             
+                            </div> 
+                        </div> 
+                    
+                        
+                                             
+                                                       
+                                                                                                             
+                                                       
+
+                                
+                   
+                                               
+
+
+                    </div> <!-- container -->
+
+                </div> <!-- content -->
+
+                <!-- Footer Start -->
+                <%- include('partials/footer') %>
+                <!-- end Footer -->
+
+            </div>
+
+            <!-- ============================================================== -->
+            <!-- End Page content -->
+            <!-- ============================================================== -->
+
+
+        </div>
+        <!-- END wrapper -->
+
+
+        <!-- Right Sidebar -->
+        <%- include('partials/rightbar') %>
+        <!-- /Right-bar -->
+
+     
+
+
+
+        <!-- bundle -->
+        <script src="assets/js/vendor.min.js"></script>
+        <script src="assets/js/app.min.js"></script>
+
+        <!-- Typehead -->
+        <script src="assets/js/vendor/handlebars.min.js"></script>
+        <script src="assets/js/vendor/typeahead.bundle.min.js"></script>
+
+        <!-- Demo -->
+        <script src="assets/js/pages/demo.typehead.js"></script>
+
+    </body>
+
+</html>

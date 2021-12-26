@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">   
+
+<head>
+        <meta charset="utf-8" />
+        <title>Impresión de etiquetas | app</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="icheck | Software Argentina" name="description" />
+        <meta content="icheck" name="author" />
+        <!-- App favicon -->
+        <link rel="shortcut icon" href="assets/images/favicon.ico">
+        <script src="https://cdn.jsdelivr.net/jsbarcode/3.5.8/JsBarcode.all.min.js"></script>
+
+        <!-- third party css -->
+        <link href="assets/css/vendor/dataTables.bootstrap4.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/vendor/responsive.bootstrap4.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/vendor/buttons.bootstrap4.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/vendor/select.bootstrap4.css" rel="stylesheet" type="text/css" />
+        <!-- third party css end -->        
+
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="https://files.codepedia.info/files/uploads/iScripts/html2canvas.js"></script>
+        <script src="https://printjs-4de6.kxcdn.com/print.min.js"></script>
+        <!-- App css -->
+
+        <script src="assets/js/select2/select2.js"></script>
+
+        <link rel="stylesheet" href="assets/css/estiloprincipal.css">
+        <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/app-dark.min.css" rel="stylesheet" type="text/css" <%=user.varColorModoOscuro%> />
+        <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" <%=user.varColorModoClaro%>/>
+        <script src="assets/js/vendor/Chart.bundle.min.js"></script>
+
+    </head>
+
+    <body class="loading" data-layout-config='{}'data-leftbar-compact-mode="<%=user.barraCompact%>" data-leftbar-theme="<%=user.barraIzqTema%>">
+        <!-- Begin page -->
+        <%- include('partials/barra') %>
+
+            <!-- ============================================================== -->
+            <!-- Start Page Content here -->
+            <!-- ============================================================== -->
+
+            <div class="content-page">
+                <div class="content">
+                    <!-- Topbar Start -->
+                    <%- include('partials/topbar') %>
+                    <!-- end Topbar -->
+
+                    <!-- Start Content-->
+                    <div class="container-fluid">
+                        
+                        <!-- start page title -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box">
+                                    <div class="page-title-right">
+                                        <ol class="breadcrumb m-0">
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Componentes</a></li>
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Inventario</a></li>
+                                            <li class="breadcrumb-item active">Impresión de etiquetas</li>
+                                        </ol>
+                                    </div>
+                                    <h4 class="page-title">Impresión de etiquetas</h4>
+                                </div>
+                            </div>
+                        </div>     
+                        <!-- end page title -->     
+                                  
+                  
+                                  
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+
+                         
+                                        <h4 class="header-title">Impresión de etiquetas</h4>
+                                        <p class="text-muted font-14">
+                                           Mostrando todos los artículos cargados.
+                                        </p>
+
+                                                <ul class="nav nav-tabs nav-bordered mb-3">
+                                                    <li class="nav-item">
+                                                        <a href="#buttons-table-general" data-toggle="tab" aria-expanded="false" class="nav-link active">
+                                                            Vista General
+                                                        </a>
+                                                    </li>                                                   
+                                            
+                                                </ul>                               
+               
+                                                    <div class="text-center" id="codigobarrascontenedor" style="display: none;">
+                                                      <h4 class="header-title">Código del item seleccionado:</h4>
+                                                        <svg id="barcode"></svg>
+                                                        <br>
+                                                        <br>
+                                                        <button  class="btn btn-success" onClick="printJS('barcode', 'html')">Imprimir</button>
+                                                        <br>
+                                                    </br>
+                                                    </div>
+
+                                        <div class="tab-content">
+                                            <div class="tab-pane show active" id="buttons-table-general">      
+                                                <table id="basic-datatable" class="table table-striped dt-responsive nowrap w-100">
+                                                    <thead>
+                                                        <tr>                                           
+                                                            <th>Código</th>
+                                                            <th>Nombre</th>                                                              
+                                                            <th>Código GLN/CUFE</th>                                           
+                                                            <th>Imprimir rótulo</th>
+                                                        </tr>
+                                                    </thead>                                                
+                                                
+                                                    <tbody>
+
+
+                                                        <% for(var i = 0; i<setobj.length; i++){  %>   
+                                                            <%if(setobj[i].habilitado == true){   %>       
+                                                                            <tr>
+                                                                                
+                                                                                <td><%=setobj[i].codigoSet%></td>
+                                                                                <td><%=setobj[i].nombreSet%></td>
+                                                                                <td><%=setobj[i].codbarraSet%></td>                                                                                             
+                                                                
+                                                                    
+                                                                                <td class="table-action">                                                               
+                                                                                        <a onclick="imprimirrotulo('<%=setobj[i].codbarraSet%>')" class="action-icon"> <i class="mdi mdi-printer"></i></a>                                                             
+                                                                                </td>
+
+                                                                            </tr>        
+                                                            <%}%> 
+                                                        <%}%> 
+
+
+
+
+
+
+
+
+
+
+
+
+                                                        <% for(var i = 0; i<articulosobj.length; i++){  %>   
+                                                            <%if(articulosobj[i].habilitado == true){   %>       
+                                                                            <tr>
+                                                                                
+                                                                                <td><%=articulosobj[i].codigoArticulo%></td>
+                                                                                <td><%=articulosobj[i].nombre%></td>
+                                                                                <td><%=articulosobj[i].codgln%></td>                                                                                             
+                                                                
+                                                                    
+                                                                                <td class="table-action">                                                               
+                                                                                        <a onclick="imprimirrotulo('<%=articulosobj[i].codigoArticulo%>')" class="action-icon"> <i class="mdi mdi-printer"></i></a>                                                             
+                                                                                </td>
+
+                                                                            </tr>        
+                                                            <%}%> 
+                                                        <%}%> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                    </tbody>
+                                                </table>                                           
+                                            </div>                                               
+                                        </div>                                         
+                                    </div> 
+                                </div> 
+                             </div>
+                        </div>  
+                    </div> 
+                </div> <!-- content -->
+                <!-- Footer Start -->
+                <%- include('partials/footer') %>
+                <!-- end Footer -->
+
+            </div>
+
+            <!-- ============================================================== -->
+            <!-- End Page content -->
+            <!-- ============================================================== -->        
+
+        </div>
+        <!-- END wrapper -->
+
+        <!-- Right Sidebar -->
+        <%- include('partials/rightbar') %>
+        <!-- /Right-bar -->
+
+    </body>        
+
+    <script>
+
+function imprimirrotulo(codigodeposito){
+    document.getElementById("codigobarrascontenedor").style.display = "block"
+        JsBarcode("#barcode", codigodeposito);
+}
+    </script>
+    
+     <!-- bundle -->
+     
+     <script src="assets/js/vendor.min.js"></script>
+     <script src="assets/js/app.min.js"></script>
+
+     <!-- third party js -->
+     <script src="assets/js/vendor/jquery.dataTables.min.js"></script>
+     <script src="assets/js/vendor/dataTables.bootstrap4.js"></script>
+     <script src="assets/js/vendor/dataTables.responsive.min.js"></script>
+     <script src="assets/js/vendor/responsive.bootstrap4.min.js"></script>
+     <script src="assets/js/vendor/dataTables.buttons.min.js"></script>
+     <script src="assets/js/vendor/buttons.bootstrap4.min.js"></script>
+     <script src="assets/js/vendor/buttons.html5.min.js"></script>
+     <script src="assets/js/vendor/buttons.flash.min.js"></script>
+     <script src="assets/js/vendor/buttons.print.min.js"></script>
+     <script src="assets/js/vendor/dataTables.keyTable.min.js"></script>
+     <script src="assets/js/vendor/dataTables.select.min.js"></script>
+     <!-- third party js ends -->
+
+     <!-- demo app -->
+     <script src="assets/js/pages/demo.datatable-init.js"></script>
+     <!-- end demo js-->
+
+</html>

@@ -1,0 +1,203 @@
+<footer class="footer">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                <script>document.write(new Date().getFullYear())</script> ©
+            </div>
+            <div class="col-md-6">
+                <div class="text-md-right footer-links d-none d-md-block">
+                    <button style="border:0px solid black; background-color: transparent; cursor: hand; margin-right: 27px;" class="modal-button" href="#acercade">
+                        <a href="#acercade">Acerca de</a>
+                    </button>  
+                    <!-- <a href="javascript: void(0);">Soporte</a> -->
+                    <button style="border:0px solid black; background-color: transparent; cursor: hand; margin-right: 27px;" class="modal-button" href="#contacto">
+                        <a href="#contacto">Contacto</a>
+                    </button> 
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- The Modal -->
+<div id="acercade" class="modal">
+    <!-- Modal content -->    
+    <div class="modal-content text-center bordermodal">
+        <div class="modal-header">
+            <br>
+            <p></p>
+            <span class="close">×</span>
+        </div>              
+        <div id="your-element-selector">
+        <div class="modal-body tamañotexto">  
+
+            <br>
+            <h3>David Reale</h3>  
+            <h5>Concepto e idea</h5> 
+            <br>
+         
+            <h3> Santiago Suarez</h3>  
+                <h5>Programación, diseño y desarrollo</h5> 
+                <!-- <p>Todos los derechos reservados</p>   
+                <script>document.write(new Date().getFullYear())</script> © 
+                <br> -->
+                <br> 
+                <br>
+            </div>                 
+         </div>
+    </div>                      
+  </div>
+
+
+
+
+
+<!-- The Modal -->
+<div id="contacto" class="modal ">
+    <!-- Modal content -->    
+    <div class="modal-content text-center bordermodal ">
+        <div class="modal-header">
+            <br>
+            <p></p>
+            <span class="close">×</span>
+        </div>              
+       
+        <div class="modal-body tamañotexto"> 
+                    <div class="container p-4">
+                        <div class="row">
+                                <div class="col-md-6 offset-md-3">
+                                    <!-- <div class="card">
+                                        <div class="card-body"> -->
+                                            <div class="page-title-box" style="line-height: normal;">
+
+                                                <h1 class="page-title" style="font-size: 30px; line-height: normal;">Enviar consulta</h1>
+                                                <h1 class="page-title" style="font-size: 17px; line-height: normal;">Utilice el formulario para contactarse con <br>nosotros.</h1>
+                                            </div>
+                                            <br>
+                                       
+                                            <form action="/enviar-consulta" method="POST">
+                                                <div class="form-group">
+                                                    <input type="text" required name="name" class="form-control" placeholder="Nombre" autofocus>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="text" required name="email" class="form-control" placeholder="E-Mail">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="text" required name="telefono" class="form-control" placeholder="Teléfono">
+                                                </div>
+                                                <div class="form-group">
+                                                <textarea name="mensaje" required rows="2" class="form-control" placeholder="Mensaje" ></textarea>
+                                                </div>
+                                                <button class="btn btn-primary btn-block">Enviar</button>                            
+                                            </form>
+                                        <!-- </div>
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>                        
+        </div>
+    </div>                      
+</div>
+
+
+
+
+  <script>
+    // Get the button that opens the modal
+    var btn = document.querySelectorAll("button.modal-button");
+    
+    // All page modals
+    var modals = document.querySelectorAll('.modal');
+    
+    // Get the <span> element that closes the modal
+    var spans = document.getElementsByClassName("close");
+    
+    // When the user clicks the button, open the modal
+    for (var i = 0; i < btn.length; i++) {
+     btn[i].onclick = function(e) {
+        e.preventDefault();
+        modal = document.querySelector(e.target.getAttribute("href"));
+        modal.style.display = "block";
+     }
+    }
+    
+    // When the user clicks on <span> (x), close the modal
+    for (var i = 0; i < spans.length; i++) {
+     spans[i].onclick = function() {
+        for (var index in modals) {
+          if (typeof modals[index].style !== 'undefined') modals[index].style.display = "none";    
+        }
+     }
+    }
+    
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target.classList.contains('modal')) {
+         for (var index in modals) {
+          if (typeof modals[index].style !== 'undefined') modals[index].style.display = "none";    
+         }
+        }
+    }
+    </script>
+<!-- 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/vanta@0.5.21/dist/vanta.clouds.min.js"></script>
+
+<script>
+VANTA.CLOUDS({
+  el: "#your-element-selector",
+  mouseControls: true,
+  touchControls: true,
+  gyroControls: false,
+  minHeight: 284.00,
+  minWidth: 958.00
+})
+ -->
+<!-- 
+dragElement(document.getElementById("calculadora"));
+
+function dragElement(elmnt) {
+  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+  if (document.getElementById(elmnt.id + "header")) {
+
+    document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+  } else {
+
+    elmnt.onmousedown = dragMouseDown;
+  }
+
+  function dragMouseDown(e) {
+    e = e || window.event;
+    e.preventDefault();
+
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    document.onmouseup = closeDragElement;
+
+    document.onmousemove = elementDrag;
+  }
+
+  function elementDrag(e) {
+    e = e || window.event;
+    e.preventDefault();
+
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+
+    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+  }
+
+  function closeDragElement() {
+
+    document.onmouseup = null;
+    document.onmousemove = null;
+  }
+}
+
+
+</script>  -->
+

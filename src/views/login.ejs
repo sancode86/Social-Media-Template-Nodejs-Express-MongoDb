@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App - Iniciar Sesión</title>
+<!--     
+    <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" id="light-style" />
+    <link href="assets/css/app-dark.min.css" rel="stylesheet" type="text/css" id="dark-style" />  -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="/css/mainlogin.css">
+    <!-- <link href="assets/css/vendor/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css" /> -->
+
+    <%- include('partials/signinhead') %>
+</head>
+
+<body>
+
+    <% if (message.length >0){ %>   
+        <div class="alert alert-danger">
+          <%= message %>   
+        </div>
+    <% }%>   
+    <div class="login-dark">
+        <form action="/login" method="post">
+            <h2 class="sr-only">Iniciar Sesión</h2>
+            <div class="illustration"><i class="icon ion-ios-locked-outline"></i></div>
+            <div class="text-center">
+             
+            </div>
+            <br>
+            <div class="form-group"><input class="form-control" type="email" name="email" placeholder="E-mail"></div>
+            <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Contraseña"></div>
+            <br>
+            <div class="form-group text-center"><button class="boton" type="submit">Iniciar Sesión</button></div>
+            <!-- <a href="/signup" class="forgot">Registrate</a> -->
+            <a href="/" class="forgot">Home</a>
+            
+        </form>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
