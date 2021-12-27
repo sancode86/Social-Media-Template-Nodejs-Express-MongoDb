@@ -1,29 +1,59 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>App - Iniciar Sesión</title>
-</head>
+    <%- include('partials/barra') %>
+  </head>
 
-<body>
-    <% if (message.length >0){ %>   
-        <div class="alert alert-danger">
-          <%= message %>   
+  <body>
+    <% if (message.length >0){ %>
+    <div class="alert alert-danger"><%= message %></div>
+    <% }%>
+
+    <section class="vh-100" style="background-color: #508bfc">
+      <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+            <div class="card shadow-2-strong" style="border-radius: 1rem">
+              <div class="card-body p-5 text-center">
+                <h3 class="mb-5">Iniciar Sesión</h3>
+                <form action="/login" method="post" class="text-center">
+                  <div class="mb-3">
+                    <input
+                      class="form-control"
+                      type="email"
+                      name="email"
+                      placeholder="E-mail"
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <input
+                      type="password"
+                      class="form-control"
+                      name="password"
+                      placeholder="Contraseña"
+                    />
+                  </div>           
+                  <div class="d-grid gap-2">
+
+                      <button
+                      type="submit"
+                      class="btn btn-primary"
+                      >
+                      Aceptar
+                    </button>
+                </div>
+                  <hr class="my-4" />        
+                  <a href="/signup" class="btn btn-outline-primary">Crear cuenta</a>             
+                  <a href="/" class="btn btn-outline-primary">Inicio</a>
+                </form>
+              </div>
+            </div>
+          </div>
         </div>
-    <% }%>   
-
-        <form action="/login" method="post">            
-          
-            <div class="form-group"><input class="form-control" type="email" name="email" placeholder="E-mail"></div>
-            <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Contraseña"></div>
-            <br>
-            <div class="form-group text-center"><button class="boton" type="submit">Iniciar Sesión</button></div>
-            <!-- <a href="/signup" class="forgot">Registrate</a> -->
-            <a href="/" class="forgot">Home</a>
-            
-        </form>
-</body>
-
+      </div>
+    </section>
+  </body>
 </html>
