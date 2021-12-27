@@ -4,12 +4,13 @@
         <meta charset="utf-8" />
         <title>Carga de Artículos | app</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta content="icheck | Software Argentina" name="description" />
-        <meta content="icheck" name="author" /> 
+        <meta content="sancode | Software Argentina" name="description" />
+        <meta content="sancode" name="author" /> 
         <link rel="shortcut icon" href="assets/images/favicon.ico">  
         <%- include('partials/barra') %>
     </head>
-    <body>     
+    <body id="bodyId" class="esconder">
+        <%- include('partials/spinner') %>  
                             <form action="/agregar-articulos" method="POST" enctype="multipart/form-data">
                                                <h4>Agregar un nuevo artículo</h4>                                     
                                           
@@ -169,3 +170,10 @@
         </script>   
     </body>
 </html>
+<script>
+    //para el spiner y la pantalla de carga
+    window.onload = function () {
+      $("#spiner").fadeOut();
+      $("#bodyId").removeClass("esconder"); 
+    };
+  </script>
