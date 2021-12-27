@@ -3,16 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>        
-    <%- include('partials/headreglog') %>
+    <title>Register</title>      
+
    <script src="..\js\checkpassword.js"></script>
 </head>
-<body class="signup">
+<body>
     
-<div class="container">
-    <div class="col-sm-6 mx-auto text-center">
-        <div class="card mt-5">
-            <div class="card-body">
+
                 <h1 class="text-center"><span class="fa fa-sign-in"></span> Signup</h1>
 
                 <% if (message.length > 0){ %>   
@@ -39,10 +36,8 @@
                         <p>Have account? <a href="/login">Login</a></p>
                         <p>Or go <a href="/">Home</a></p>
                     </div>   
-            </div>
-        </div>
-    </div>
-</div>
+      
+
 
 </body>
 </html>

@@ -1,121 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-    
-
 <head>
         <meta charset="utf-8" />
         <title>Carga de Artículos | app</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="icheck | Software Argentina" name="description" />
-        <meta content="icheck" name="author" />
-        <!-- App favicon -->
-        <link rel="shortcut icon" href="assets/images/favicon.ico">
-        
-        <!-- App css -->
+        <meta content="icheck" name="author" /> 
+        <link rel="shortcut icon" href="assets/images/favicon.ico">       
+
         <link rel="stylesheet" href="assets/css/estiloprincipal.css">
-        <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
-        <link href="assets/css/app-dark.min.css" rel="stylesheet" type="text/css" <%=user.varColorModoOscuro%> />
-        <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" <%=user.varColorModoClaro%>/>
+    
     </head>
-
-    <body class="loading" data-layout-config='{}'data-leftbar-compact-mode="<%=user.barraCompact%>" data-leftbar-theme="<%=user.barraIzqTema%>">
-        <!-- Begin page -->
-        
-
-        <%- include('partials/barra') %>
-
-            <!-- ============================================================== -->
-            <!-- Start Page Content here -->
-            <!-- ============================================================== -->
-
-            <div class="content-page">
-                <div class="content">
-                    <!-- Topbar Start -->
-                    <%- include('partials/topbar') %>
-                    <!-- end Topbar -->
-
-     
-
-                    <!-- Start Content-->
-                    <div class="container-fluid">
-                        
-                        <!-- start page title -->
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="page-title-box">
-                                    <div class="page-title-right">
-                                        <ol class="breadcrumb m-0">
-                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Componentes</a></li>
-                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Inventario</a></li>
-                                            <li class="breadcrumb-item active">Carga de Artículos</li>
-                                        </ol>
-                                    </div>
-                                    <h4 class="page-title">Carga de Artículos</h4>
-                                </div>
-                            </div>
-                        </div>     
-                        <!-- end page title --> 
-                      
-   
-
-                    <form action="/agregar-articulos" method="POST" enctype="multipart/form-data">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="header-title">Agregar un nuevo artículo
-                         
-                                       <a href="#" data-toggle="tooltip" title="
-                                       Completar el formulario para cargar un nuevo artículo en el sistema. El campo código debe ser único.
-                                      "> <i style="color: #6c757d;" class="mdi mdi-help-circle"></i> </a>
-
-                                         </h4> 
-
-
-                                            <ul class="nav nav-tabs nav-bordered mb-3">
-                                                <li class="nav-item">
-                                                    <a href="#input-masks-general" data-toggle="tab" aria-expanded="false" class="nav-link active">
-                                                        General
-                                                    </a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a href="#input-masks-costo" data-toggle="tab" aria-expanded="true" class="nav-link">
-                                                        Costo
-                                                    </a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a href="#input-masks-imagen" data-toggle="tab" aria-expanded="true" class="nav-link">
-                                                        Imágen
-                                                    </a>
-                                                </li>
-                                            </ul> <!-- end nav-->
-                                        <div class="tab-content">
-                                            <div class="tab-pane show active" id="input-masks-general">
-                                                <div class="row">
-                                                    <div class="col-md-6">
+    <body>     
+                            <form action="/agregar-articulos" method="POST" enctype="multipart/form-data">
+                                               <h4>Agregar un nuevo artículo</h4>                                     
+                                          
                                                             <div class="form-group">
                                                                 <label>Código</label>
                                                                 <input required onkeyup="SincractividadesRecientes()" type="text" name="codigoArticulo" class="form-control" id="campocodigo" >
-                                                                <span class="font-13 text-muted">Ejemplo: 5020030B</span>
+                                                                <span class="font-13 text-muted">Ejemplo: asd</span>
                                                             </div>
                                                             <div class="form-group">
                                                                 <label>Nombre</label>
                                                                 <input required onkeyup="SincractividadesRecientes()" type="text" name="nombre" class="form-control" id="camponombre" >
-                                                                <span class="font-13 text-muted">Ejemplo: Tornillo Drywall</span>
+                                                                <span class="font-13 text-muted">Ejemplo: qwe</span>
                                                             </div>
                                                             <div class="form-group">
                                                                 <label>Medida</label>
                                                                 <input type="text" name="medida" class="form-control" 
                                                                 value="0" maxlength="15" 
-                                                                onkeydown="validateNumber(event);">                                                  
-                                                                                                                            
+                                                                onkeydown="validateNumber(event);">                        
                                                                 
                                                                 <br>
                                                                 <select name="medidaUnidad" class="form-control">
                                                                     <option disabled selected>Seleccionar unidad</option>                                                                    
                                                                     <option value="-">Sin especificar</option>
-                                                                    <optgroup label="Longitud">
-                                                               
+                                                                    <optgroup label="Longitud">                                                               
                                                                         <option value="Decímetro">Decímetro</option>
                                                                         <option value="Metro">Metro</option>
                                                                         <option value="Centímetro">Centímetro</option>
@@ -123,268 +43,31 @@
                                                                         <option value="Micrómetro">Micrómetro</option>
                                                                                                                                
                                                                     </optgroup>                                                                    
-                                                                    <optgroup label="Superficie">
-                                                             
+                                                                    <optgroup label="Superficie">                                                             
                                                                         <option value="Decímetro²">Decímetro²</option>
                                                                         <option value="Metro²">Metro²</option>
                                                                         <option value="Centímetro²">Centímetro²</option>                                                                     
                                                                         <option value="Milímetro²">Milímetro²</option>                                                                    
                                                                     </optgroup>
-                                                                    <optgroup label="Volumen">
-                                                           
+                                                                    <optgroup label="Volumen">                                                           
                                                                         <option value="Metro³">Metro³</option>
                                                                         <option value="Centímetro³">Centímetro³</option>
                                                                         <option value="Milímetro³">Milímetro³</option>                                                                                                                         
                                                                     </optgroup>
                                                                  
 
-                                                                </select>
-                                                                <!-- <span class="font-13 text-muted">Ejemplo:</span> -->
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label>Peso</label>
-                                                                <input type="text" name="peso" class="form-control" 
-                                                                value="0" maxlength="15"
-                                                                onkeydown="validateNumber(event);">
-                                                                <br>
-                                                                <select name="pesoUnidad" class="form-control">
-                                                                    <option disabled selected>Seleccionar unidad</option>           
-                                                                    <option value="-">Sin especificar</option>                                                               
-                                                           
-                                                                    <option value="Kilogramo">Kilogramo</option>
-                                                                    <option value="Gramo">Gramo</option>
-                                                                    <option value="Decigramo">Decigramo</option>
-                                                                    <option value="Centigramo">Centigramo</option>
-                                                                    <option value="Miligramo">Miligramo</option>
-                                                                        
-                                                                                                
-                                                                </select>
-                                                                <!-- <span class="font-13 text-muted">Ejemplo:</span> -->
-                                                            </div>
-
-                                               
-                                                       
-                                                    </div> <!-- end col -->
-        
-                                                        <div class="col-md-6">
+                                                                </select>                                                                
                                                                 
-                                                                    <!-- <div class="form-group">
-                                                                        <label>Stock Mínimo 
-
-                                                                            <a href="#" data-toggle="tooltip" title="
-                                                                            Stock mínimo y máximo se utilizan para mostrar indicador 'porcentaje de necesidad' en informes.
-                                                                           "> <i style="color: #6c757d;" class="mdi mdi-help-circle"></i> </a>
-
-
-                                                                        </label>
-                                                                        <input name="stockMinimo" type="text" class="form-control" 
-                                                                        value="0" maxlength="15"
-                                                                        onkeydown="validateNumber(event);">
-                                                                
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label>Stock Máximo
-
-                                                                            <a href="#" data-toggle="tooltip" title="
-                                                                            Stock mínimo y máximo se utilizan para mostrar indicador 'porcentaje de necesidad' en informes.
-                                                                           "> <i style="color: #6c757d;" class="mdi mdi-help-circle"></i> </a>
-
-
-                                                                        </label>
-                                                                        <input name="stockMaximo" type="text" class="form-control" 
-                                                                        value="0" maxlength="15"
-                                                                        onkeydown="validateNumber(event);">
-                                                    
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label>Stock Actual (Testing)</label>
-                                                                        <input name="stockActual" type="text" class="form-control" 
-                                                                        value="0" maxlength="15"
-                                                                        onkeydown="validateNumber(event);">
-                                                            
-                                                                    </div> -->
-
-                                                                    <label>Origen</label>                                                              
-                                                                    <br>
-                                                                    <select name="origen" class="form-control">
-                                                                        <option disabled selected>Seleccionar Origen</option>           
-                                                                        <option value="-">Sin especificar</option>                                                               
-                                                                        <option value="Fabricación Propia">Fabricación Propia</option>
-                                                                        <option value="Terceros">Terceros</option>                                           
-                                                                    </select>
-
-                                                                    <br>
-
-                                                                    <label>Tipo de Articulo</label>                                                              
-                                                                    <br>
-                                                                    <select name="tipoArticulo" class="form-control">
-                                                                        <option disabled selected>Seleccionar Tipo</option>           
-                                                                        <option value="-">Sin especificar</option>                                                               
-                                                                        <option value="Producto A">Producto A</option>                                              
-                                                                        <option value="Producto B">Producto B</option>
-                                                                        <option value="Producto C">Producto C</option>
-                                                                    </select>
-                                                                    <br>
-                                                                    <div class="form-group">
-                                                                        <label>Código de Barras</label>
-                                                                        <input type="text" name="codbarra" class="form-control">
-                                                                        <!-- <span class="font-13 text-muted">bla bla</span> -->
-                                                                    </div>
-                                                                    <br>
-                                                                    <div class="text-right">
-                                                                    <button onclick="actualizarinfoimagen()" type="submit" class="btn btn-success" id="botonagregar">
-                                                                        Agregar
-                                                                    </button>
-                                                                     </div>
-                                                            
-                                                        </div> 
-                                                </div>
-                                                <!-- end row -->                      
-                                            </div> <!-- end preview-->
-
-
-                                            <!-- TAB DE COSTO !!!!!!!!!!! -->
-
-                                        
-                                            <div class="tab-pane" id="input-masks-costo">
-                                        
-                                                    <div class="row">
-                                                        <div class="col-md-6">
-                                                           
-                                                                <div class="form-group">
-                                                                    <label>Costo de Producción/Compra</label>
-                                                                    <input name="costoProduccion" type="text" class="form-control" 
-                                                                    value="0" maxlength="15"
-                                                                    onkeydown="validateNumber(event);">
-                                                                    <!-- <span class="font-13 text-muted">bla bla</span> -->
-                                                                </div>
-
-
-                                                                <div class="form-group">
-                                                                    <label>Costo Moneda</label>                                                                    
-                                                                    <br>
-                                                                    <select name="costoProduccionmoneda" class="form-control">
-                                                                        <option disabled selected>Seleccionar unidad</option>           
-                                                                        <option value="-">Sin especificar</option>                                                               
-                                                                        <option value="ARS$">Peso Argentino (ARS$)</option>
-                                                                        <option value="U$S">Dólar Estadounidense (U$S)</option>
-                                                                        <option value="€">Euro (€)</option>
-                                                                        <option value="¥">Yen (¥)</option>                                                         
-                                                                    </select>
-                                                                    <!-- <span class="font-13 text-muted">Ejemplo:</span> -->
-                                                                </div>
-
-                                                                <div class="form-group">
-                                                                    <label>Precio de Venta</label>
-                                                                    <input name="precioVenta" type="text" class="form-control" 
-                                                                    value="0" maxlength="15"
-                                                                    onkeydown="validateNumber(event);">
-                                                                    <!-- <span class="font-13 text-muted">wdwdwd</span> -->
-                                                                </div>
-
-                                                                <div class="form-group">
-                                                                    <label>Precio Moneda</label>                                                                    
-                                                                    <br>
-                                                                    <select name="precioVentaMoneda" class="form-control">
-                                                                        <option disabled selected>Seleccionar unidad</option>           
-                                                                        <option value="-">Sin especificar</option>                                                               
-                                                                        <option value="ARS$">Peso Argentino (ARS$)</option>
-                                                                        <option value="U$S">Dólar Estadounidense (U$S)</option>
-                                                                        <option value="€">Euro (€)</option>
-                                                                        <option value="¥">Yen (¥)</option>                                                     
-                                                                    </select>
-                                                                    <!-- <span class="font-13 text-muted">Ejemplo:</span> -->
-                                                                </div>
-
-                        
-                                                          
-                                                        </div> <!-- end col -->
-            
-                                                        <div class="col-md-6">
-                                                            
-                                                           
-                                                                <!-- <div class="form-group">
-                                                                    <label>bla bla</label>
-                                                                    <input type="text" class="form-control" >
-                                                                    <span class="font-13 text-muted">bla bla</span>
-                                                                </div> -->
-
-
-
-
-                                                                <div class="row">
-                                                                    <div class="col-md-6"> 
-                                                                        <div class="text center">                                                                           
-                                                                
-                                                                            <!-- Switchs-->
-                                                                            <!-- <label>bla bla</label> <br>
-                                                                            <input type="checkbox" id="switch" checked data-switch="success"/>
-                                                                            <label for="switch" data-on-label="Si" data-off-label="No"></label> <br>
-                                                                            <label>bla bla</label> <br>
-                                                                            <input type="checkbox" id="switch2" checked data-switch="success"/>
-                                                                            <label for="switch2" data-on-label="Si" data-off-label="No"></label> <br>
-                                                                            <label>bla bla</label> <br>
-                                                                            <input type="checkbox" id="switch3" checked data-switch="success"/>
-                                                                            <label for="switch3" data-on-label="Si" data-off-label="No"></label> <br> -->
-                                                                        </div>    
-                                                                    </div>
-                                                                    <div class="col-md-6"> 
-                                                                        <div class="text center">                                                                      
-                                                                
-                                                                            <!-- Switchs-->
-                                                                            <!-- <label>bla bla</label> <br>
-                                                                            <input type="checkbox" id="switch4" checked data-switch="success"/>
-                                                                            <label for="switch4" data-on-label="Si" data-off-label="No"></label> <br>
-                                                                            <label>bla bla</label> <br>
-                                                                            <input type="checkbox" id="switch5" checked data-switch="success"/>
-                                                                            <label for="switch5" data-on-label="Si" data-off-label="No"></label> <br>
-                                                                            <label>bla bla</label> <br>
-                                                                            <input type="checkbox" id="switch6" checked data-switch="success"/>
-                                                                            <label for="switch6" data-on-label="Si" data-off-label="No"></label> <br> -->
-                                                                        </div>    
-                                                                    </div>
-                                                                </div>
-                                                            </div> <!-- end col -->
-                                                        </div>                                                        
-                                                    </div> <!-- end preview code-->
-
-
-
-                                             <!-- TAB DE IMAGEN !!!!!!!!!!! -->
-
-                                            <div class="tab-pane" id="input-masks-imagen">
-                                        
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                      
-                                                            <div class="form-group">
-                                                                <label>Imágen del Artículo
-
-                                                                    <a href="#" data-toggle="tooltip" title="
-                                                                   Seleccionar imágen principal del artículo. De no especificar una se establecerá una predeterminada.
-                                                                   "> <i style="color: #6c757d;" class="mdi mdi-help-circle"></i> </a>
-
-
-                                                                </label>
+                                                                <label>Imágen del Artículo</label>
                                                                 <br>
                                                                 <input onchange="actualizarinfoimagen(); vistapreviadelaimagen(this);" id="campoimagen" name="imagenarticulo" type="file" class="form-control btn btn-primary botonsubirimagen" accept="image/x-png,image/gif,image/jpeg">
                                                                 <br>
-                                                                <span class="font-13 text-muted">Subir imágen del articulo al servidor</span>
-                                                            </div>                                                
-                                                            <img id="vistaprevia" src="#" alt="Vista Previa imágen" style="display: none;"/>
-                                                    </div> <!-- end col -->     
-                                            
-                                                </div> 
-                                            </div> <!-- end tab-content IMAGEN-->
-
-
-
-                                </div>                                        
-                            </div>                                       
-                        </div>             
-                    </div> 
-                </div> 
-               
+                                                                <span class="font-13 text-muted">Subir imágen del articulo al servidor</span>                                                                
+                                                                <img id="vistaprevia" src="#" alt="Vista Previa imágen" style="display: none;"/>                                                                   
+                                                                <button onclick="actualizarinfoimagen()" type="submit" class="btn btn-success" id="botonagregar">
+                                                                    Agregar
+                                                                </button>   
+            
                 
                                                 <!-- Actividades recientes Update 
                                                     
@@ -411,38 +94,8 @@
                                                        
 
                                 
-                    </form>    <!-- FIN formulario principal --> 
-                                               
-
-
-                    </div> <!-- container -->
-
-                </div> <!-- content -->
-
-                <!-- Footer Start -->
-                <%- include('partials/footer') %>
-                <!-- end Footer -->
-
-            </div>
-
-            <!-- ============================================================== -->
-            <!-- End Page content -->
-            <!-- ============================================================== -->
-
-
-        </div>
-        <!-- END wrapper -->
-
-
-        <!-- Right Sidebar -->
-        <%- include('partials/rightbar') %>
-        <!-- /Right-bar -->
-
-
-
-
+                    </form>  
         <script>
-
         function vistapreviadelaimagen(input) {
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
@@ -459,8 +112,6 @@
                 vista.style.display = ("block");
             }
         }
-
-
 
             function SincractividadesRecientes()
             {
@@ -486,15 +137,8 @@
                     var valoraguardar = document.getElementById('imagenasubir');
                     valoraguardar.value = "noimgdefault01.jpg";
 
-                }
-
-                               
-            }
-
-       
-            $(document).ready(function(){
-            $('[data-toggle="tooltip"]').tooltip();
-            });
+                }                               
+            }        
    
 
             function validateNumber(evt) {
@@ -524,25 +168,6 @@
                     }
             }
 
-
-        </script>
-
-        <!-- Usado solamente para mostrar los tooltips -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-
-        <!-- bundle -->
-        <script src="assets/js/vendor.min.js"></script>
-        <script src="assets/js/app.min.js"></script>
-
-        <!-- Typehead -->
-        <script src="assets/js/vendor/handlebars.min.js"></script>
-        <script src="assets/js/vendor/typeahead.bundle.min.js"></script>
-
-        <!-- Demo -->
-        <script src="assets/js/pages/demo.typehead.js"></script>
-
-   
+        </script>   
     </body>
-
 </html>

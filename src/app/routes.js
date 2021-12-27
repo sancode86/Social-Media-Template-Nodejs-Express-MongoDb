@@ -7,10 +7,10 @@ const set = require("../app/models/set");
 const empresa = require("../app/models/datosEmpresa");
 const actividadesRecientes = require("../app/models/actividadesRecientes");
 // Lo necesito para poder hace el updateMany:
-var bodyParser = require("body-parser");
+// var bodyParser = require("body-parser");
 // Lo necesito para poder especificar un _id
 const mongoose = require("mongoose");
-var ObjectId = mongoose.Types.ObjectId;
+// var ObjectId = mongoose.Types.ObjectId;
 
 module.exports = (app, passport) => {
   // #########################################################################################
@@ -35,65 +35,65 @@ module.exports = (app, passport) => {
   //Rutas Carga de sets
   // #########################################################################################
 
-  app.get("/carga-de-set", isLoggedIn, async (req, res) => {
-    const articulosobj = await articulos.find();
-    const empresaDatos = await empresa.find();
-    return res.render("carga-de-set", {
-      user: req.user,
-      articulosobj,
-      empresaDatos,
-    });
-  });
+  // app.get("/carga-de-set", isLoggedIn, async (req, res) => {
+  //   const articulosobj = await articulos.find();
+  //   const empresaDatos = await empresa.find();
+  //   return res.render("carga-de-set", {
+  //     user: req.user,
+  //     articulosobj,
+  //     empresaDatos,
+  //   });
+  // });
 
-  app.post("/agregar-set", isLoggedIn, async (req, res) => {
-    console.log(new articulos(req.body));
-    const setObj = new set(req.body);
-    // Te presento mi humilde error handler
-    await setObj.save(function (err) {
-      if (err) {
-        console.log("CARGA DE SETS --> SET ya existente");
-        console.log(err);
-        return res.redirect("/carga-de-set-ya-existe");
-      } else {
-        const actividadesRecientesobj = new actividadesRecientes(req.body);
-        actividadesRecientesobj.save();
-        console.log(req.file);
-        res.redirect("/consulta-set");
-      }
-    });
-  });
+  // app.post("/agregar-set", isLoggedIn, async (req, res) => {
+  //   console.log(new articulos(req.body));
+  //   const setObj = new set(req.body);
+  //   // Te presento mi humilde error handler
+  //   await setObj.save(function (err) {
+  //     if (err) {
+  //       console.log("CARGA DE SETS --> SET ya existente");
+  //       console.log(err);
+  //       return res.redirect("/carga-de-set-ya-existe");
+  //     } else {
+  //       const actividadesRecientesobj = new actividadesRecientes(req.body);
+  //       actividadesRecientesobj.save();
+  //       console.log(req.file);
+  //       res.redirect("/consulta-set");
+  //     }
+  //   });
+  // });
 
-  app.get("/carga-de-set-ya-existe", isLoggedIn, async (req, res) => {
-    const empresaDatos = await empresa.find();
-    res.render("carga-de-set-ya-existe", {
-      user: req.user,
-      empresaDatos,
-    });
-  });
+  // app.get("/carga-de-set-ya-existe", isLoggedIn, async (req, res) => {
+  //   const empresaDatos = await empresa.find();
+  //   res.render("carga-de-set-ya-existe", {
+  //     user: req.user,
+  //     empresaDatos,
+  //   });
+  // });
 
-  app.get("/consulta-set", isLoggedIn, async (req, res) => {
-    const empresaDatos = await empresa.find();
-    const articulosobj = await set.find();
-    return res.render("consulta-set", {
-      user: req.user,
-      articulosobj,
-      empresaDatos,
-    });
-  });
+  // app.get("/consulta-set", isLoggedIn, async (req, res) => {
+  //   const empresaDatos = await empresa.find();
+  //   const articulosobj = await set.find();
+  //   return res.render("consulta-set", {
+  //     user: req.user,
+  //     articulosobj,
+  //     empresaDatos,
+  //   });
+  // });
 
-  app.get("/borrar-set/:id", isLoggedIn, async (req, res) => {
-    const { id } = req.params;
-    await set.deleteOne({ _id: id });
-    res.redirect("/consulta-set");
-  });
+  // app.get("/borrar-set/:id", isLoggedIn, async (req, res) => {
+  //   const { id } = req.params;
+  //   await set.deleteOne({ _id: id });
+  //   res.redirect("/consulta-set");
+  // });
 
-  app.get("/estado-habilitado-set/:id", async (req, res) => {
-    const { id } = req.params;
-    const articulosobj = await set.findById(id);
-    articulosobj.habilitado = !articulosobj.habilitado;
-    await articulosobj.save();
-    res.redirect("/consulta-set");
-  });
+  // app.get("/estado-habilitado-set/:id", async (req, res) => {
+  //   const { id } = req.params;
+  //   const articulosobj = await set.findById(id);
+  //   articulosobj.habilitado = !articulosobj.habilitado;
+  //   await articulosobj.save();
+  //   res.redirect("/consulta-set");
+  // });
 
   // #########################################################################################
   //Rutas Carga de Articulos
@@ -200,34 +200,34 @@ module.exports = (app, passport) => {
   //Rutas DEPOSITO
   // #########################################################################################
 
-  //Rutas Consulta de depositos
-  app.get("/impresion-etiquetas", isLoggedIn, async (req, res) => {
-    const articulosobj = await articulos.find();
-    const setobj = await set.find();
-    const empresaDatos = await empresa.find();
-    return res.render("impresion-etiquetas", {
-      user: req.user,
-      setobj,
-      empresaDatos,
-      articulosobj,
-    });
-  });
+  // //Rutas Consulta de depositos
+  // app.get("/impresion-etiquetas", isLoggedIn, async (req, res) => {
+  //   const articulosobj = await articulos.find();
+  //   const setobj = await set.find();
+  //   const empresaDatos = await empresa.find();
+  //   return res.render("impresion-etiquetas", {
+  //     user: req.user,
+  //     setobj,
+  //     empresaDatos,
+  //     articulosobj,
+  //   });
+  // });
 
-  // #########################################################################################
-  //Rutas PREFERENCIAS DE USUARIO
-  // #########################################################################################
-  //Guardar Preferencias de colores y estilo
-  app.post(
-    "/guardar-preferencias-usuario/:id",
-    isLoggedIn,
-    async (req, res) => {
-      const { id } = req.params;
-      await usuarios.updateOne({ _id: id }, req.body);
-      console.log(usuarios(req.body));
-      return res.redirect("/volver");
-    }
-  );
-  //FIN Guardar Preferencias de colores y estilo
+  // // #########################################################################################
+  // //Rutas PREFERENCIAS DE USUARIO
+  // // #########################################################################################
+  // //Guardar Preferencias de colores y estilo
+  // app.post(
+  //   "/guardar-preferencias-usuario/:id",
+  //   isLoggedIn,
+  //   async (req, res) => {
+  //     const { id } = req.params;
+  //     await usuarios.updateOne({ _id: id }, req.body);
+  //     console.log(usuarios(req.body));
+  //     return res.redirect("/volver");
+  //   }
+  // );
+  // //FIN Guardar Preferencias de colores y estilo
 
   //Para poder hacer POST y volver a la misma página
   app.get("/volver", isLoggedIn, async (req, res) => {
@@ -236,53 +236,53 @@ module.exports = (app, passport) => {
     });
   });
 
-  //ruta del o la instrumentadora o el que sea que lleva
-  //la caja del poder
-  app.get("/pantalla-carga-inst", isLoggedIn, async (req, res) => {
-    const articulosobj = await articulos.find();
-    const setobj = await set.find();
-    const empresaDatos = await empresa.find();
-    return res.render("pantalla-carga-inst", {
-      user: req.user,
-      articulosobj,
-      empresaDatos,
-      setobj,
-    });
-  });
+  // //ruta del o la instrumentadora o el que sea que lleva
+  // //la caja del poder
+  // app.get("/pantalla-carga-inst", isLoggedIn, async (req, res) => {
+  //   const articulosobj = await articulos.find();
+  //   const setobj = await set.find();
+  //   const empresaDatos = await empresa.find();
+  //   return res.render("pantalla-carga-inst", {
+  //     user: req.user,
+  //     articulosobj,
+  //     empresaDatos,
+  //     setobj,
+  //   });
+  // });
 
   //ENVIAR INFO APP
 
-  app.post("/enviar-info-app", async (req, res) => {
-    const { informacion } = req.body;
+  // app.post("/enviar-info-app", async (req, res) => {
+  //   const { informacion } = req.body;
 
-    contentHTML = `
-      <h1>Enviado desde la APP (Sin acomodar) </h1>
-      <p>Informacion: ${informacion}</p></br>   
-      `;
-    console.log(contentHTML);
+  //   contentHTML = `
+  //     <h1>Enviado desde la APP (Sin acomodar) </h1>
+  //     <p>Informacion: ${informacion}</p></br>   
+  //     `;
+  //   console.log(contentHTML);
 
-    const transporter = nodemailer.createTransport({
-      service: "gmail",
-      secure: false,
-      auth: {
-        user: "laputaquelospario@gmail.com",
-        pass: "",
-      },
-    });
+  //   const transporter = nodemailer.createTransport({
+  //     service: "gmail",
+  //     secure: false,
+  //     auth: {
+  //       user: "laputaquelospario@gmail.com",
+  //       pass: "",
+  //     },
+  //   });
 
-    const info = await transporter.sendMail({
-      from: "'App Instrumentacion'",
-      to: "laputaquelospario@gmail.com",
-      subject: "Mensaje Sistema",
-      html: contentHTML,
-    });
-    console.log("mensaje enviado", info.messageId);
-    res.redirect("/");
-  });
+  //   const info = await transporter.sendMail({
+  //     from: "'App Instrumentacion'",
+  //     to: "laputaquelospario@gmail.com",
+  //     subject: "Mensaje Sistema",
+  //     html: contentHTML,
+  //   });
+  //   console.log("mensaje enviado", info.messageId);
+  //   res.redirect("/");
+  // });
 
-  // #########################################################################################
-  //Enviar mail consulta
-  // #########################################################################################
+  // // #########################################################################################
+  // //Enviar mail consulta
+  // // #########################################################################################
 
   app.post("/enviar-consulta", async (req, res) => {
     const { name, email, telefono, mensaje } = req.body;
@@ -301,7 +301,7 @@ module.exports = (app, passport) => {
       secure: false,
       auth: {
         user: "laputaquelospario@gmail.com",
-        pass: "Somostodoloquees",
+        pass: "",
       },
     });
 
@@ -327,8 +327,8 @@ module.exports = (app, passport) => {
   //Rutas de Login y Signup
 
   app.get("/", (req, res) => {
-    // res.render("index");
-    res.redirect("/login");
+    res.render("index");
+    // res.redirect("/index");
   });
 
   app.get("/login", async (req, res) => {
@@ -398,25 +398,25 @@ module.exports = (app, passport) => {
     });
   });
 
-  app.get("/edit/:id", isAdmin, async (req, res) => {
-    const { id } = req.params;
-    const task = await Task.findById(id);
-    res.render("edit", {
-      task,
-    });
-  });
+  // app.get("/edit/:id", isAdmin, async (req, res) => {
+  //   const { id } = req.params;
+  //   const task = await Task.findById(id);
+  //   res.render("edit", {
+  //     task,
+  //   });
+  // });
 
-  app.post("/edit/:id", isAdmin, async (req, res) => {
-    const { id } = req.params;
-    await Task.updateOne({ _id: id }, req.body);
-    res.redirect("/admin");
-  });
+  // app.post("/edit/:id", isAdmin, async (req, res) => {
+  //   const { id } = req.params;
+  //   await Task.updateOne({ _id: id }, req.body);
+  //   res.redirect("/admin");
+  // });
 
-  app.get("/delete/:id", isAdmin, async (req, res) => {
-    const { id } = req.params;
-    await Task.deleteOne({ _id: id });
-    res.redirect("/admin");
-  });
+  // app.get("/delete/:id", isAdmin, async (req, res) => {
+  //   const { id } = req.params;
+  //   await Task.deleteOne({ _id: id });
+  //   res.redirect("/admin");
+  // });
 
   //Verifica si es administrador antes de redireccionar al panel admin
   app.get("/admin", isAdmin, async (req, res) => {
