@@ -9,36 +9,59 @@
    <%- include('partials/barra') %>
 </head>
 <body>
-    
-
-                <h1 class="text-center"><span class="fa fa-sign-in"></span> Signup</h1>
-
-                <% if (message.length > 0){ %>   
-                    <div class="alert alert-danger">
-                    <%= message %>   
-                    </div>
-                <% }%> 
-
-                        <form action="/signup" method="post" onchange="register()" onkeypress="register()" onkeyup="register()">
-                            <div class="form-group">                                 
-                                    <input type="email" name="email" class="form-control" placeholder="E-Mail" required>
+    <% if (message.length > 0){ %>   
+        <div class="alert alert-danger">
+        <%= message %>   
+        </div>
+    <% }%> 
+                
+                    <form action="/signup" method="post" onchange="register()" onkeypress="register()" onkeyup="register()">
+                    <section class="vh-100" style="background-color: #508bfc">
+                        <div class="container py-5 h-100">
+                          <div class="row d-flex justify-content-center align-items-center h-100">
+                            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                              <div class="card shadow-2-strong" style="border-radius: 1rem">
+                                <div class="card-body p-5 text-center">
+                                  <h3 class="mb-5">Crear Cuenta</h3>
+                                  <form action="/login" method="post" class="text-center">
+                                    <div class="mb-3">
+                                      <input
+                                        class="form-control"
+                                        type="email"
+                                        name="email"
+                                        placeholder="E-mail"
+                                        required
+                                      />
+                                    </div>
+                                    <div class="mb-3">
+                                      <input
+                                        type="password"
+                                        class="form-control"
+                                        name="password"
+                                        placeholder="Contraseña"
+                                        required
+                                      />
+                                    </div>                                     
+                                    <div class="mb-3">                         
+                                        <input type="password" name="confirm_password" class="form-control" placeholder="Confirm Password" id="confirm_password"  required>
+                                    </div> 
+                                    <div class="d-grid gap-2">                  
+                                        <button
+                                        type="submit"
+                                        class="btn btn-primary"
+                                        >
+                                        Aceptar
+                                      </button>
+                                  </div>
+                                    <hr class="my-4" />        
+                                    <a href="/login" class="btn btn-outline-primary">¿Ya tenés cuenta?</a>             
+                                    <a href="/" class="btn btn-outline-primary">Inicio</a>
+                                  </form>
+                                </div>
+                              </div>
                             </div>
-                            <div class="form-group">                            
-                                <input type="password" name="password" class="form-control" placeholder="Password" id="password" required>
-                            </div>
-                            <div class="form-group">                            
-                                <input type="password" name="confirm_password" class="form-control" placeholder="Confirm Password" id="confirm_password"  required>
-                            </div>                                                
-                            <input type="submit" class="btn btn-dark btn-lg" id="submit" disabled>  
-                        </form>          
-
-                    <hr>
-                    <div class="text-center">
-                        <p>Have account? <a href="/login">Login</a></p>
-                        <p>Or go <a href="/">Home</a></p>
-                    </div>   
-      
-
-
+                          </div>
+                        </div>
+                      </section>
 </body>
 </html>
