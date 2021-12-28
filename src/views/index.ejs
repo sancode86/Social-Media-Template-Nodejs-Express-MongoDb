@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>sancode</title>    
-    <%- include('partials/barra') %>
+    <%- include('partials/head') %>
 </head>
 <body id="bodyId" class="esconder">
     <%- include('partials/spinner') %>
@@ -15,10 +15,4 @@
 
 </body>
 </html>
-<script>
-    //para el spiner y la pantalla de carga
-    window.onload = function () {
-      $("#spiner").fadeOut();
-      $("#bodyId").removeClass("esconder"); 
-    };
-  </script>
+<%- include('partials/postFooter') %>

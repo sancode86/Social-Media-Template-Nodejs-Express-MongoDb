@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>App - Iniciar Sesión</title>
-    <%- include('partials/barra') %>
+    <%- include('partials/head') %>
   </head>
 
   <body id="bodyId" class="esconder">
@@ -56,10 +56,4 @@
     </section>
   </body>
 </html>
-<script>
-    //para el spiner y la pantalla de carga
-    window.onload = function () {
-      $("#spiner").fadeOut();
-      $("#bodyId").removeClass("esconder"); 
-    };
-  </script>
+<%- include('partials/postFooter') %>

@@ -7,7 +7,7 @@
       <meta content="sancode | Software Argentina" name="description" />
       <meta content="sancode" name="author" />
      
-      <%- include('partials/barra') %>
+      <%- include('partials/head') %>
 
    </head>
    <body id="bodyId" class="esconder">
@@ -254,13 +254,7 @@
 
 
    </body>
-   <script>
-      //para el spiner y la pantalla de carga
-      window.onload = function () {
-        $("#spiner").fadeOut();
-        $("#bodyId").removeClass("esconder"); 
-      };
-    </script>
+   <%- include('partials/postFooter') %>
    <script>
       // tipos de articulos en la base de datos
       var cantprodtermdato = document.getElementById('cantprodterm').innerHTML;

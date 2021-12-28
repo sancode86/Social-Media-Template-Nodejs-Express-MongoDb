@@ -7,7 +7,7 @@
         <meta content="sancode | Software Argentina" name="description" />
         <meta content="sancode" name="author" /> 
         <link rel="shortcut icon" href="assets/images/favicon.ico">  
-        <%- include('partials/barra') %>
+        <%- include('partials/head') %>
     </head>
     <body id="bodyId" class="esconder">
         <%- include('partials/spinner') %>  
@@ -170,10 +170,4 @@
         </script>   
     </body>
 </html>
-<script>
-    //para el spiner y la pantalla de carga
-    window.onload = function () {
-      $("#spiner").fadeOut();
-      $("#bodyId").removeClass("esconder"); 
-    };
-  </script>
+<%- include('partials/postFooter') %>
