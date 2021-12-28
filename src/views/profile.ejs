@@ -8,62 +8,33 @@
     <title>sancode - Perfil del Usuario</title>
     <%- include('partials/barra') %>
 </head>
-
-<style>
-     @media (max-width: 767.98px){     
-        .maxwidth{
-        width: 90% !important;
-        margin-left: auto !important;
-        margin-right: auto !important;
-        }        
-    }
-
-    .maxwidth{
-        width: 70%;
-        margin-left: auto !important;
-        margin-right: auto !important;
-    }
-
-    p{
-        font-size: 17px;
-    }
-
-</style>
-
 <body id="bodyId" class="esconder">
     <%- include('partials/spinner') %>
-
-    <div class="login-dark">
-       
-        <div class="card text-center mt-5 maxwidth">
-            <div class="card-body ">
-
-                <h2 class="card-tittle">
-                    <span class="fa fa-user"></span> Información del Usuario</h2>
+    <section class="vh-100">
+        <div class="container py-5 h-100">
+          <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+              <div class="card shadow-2-strong" style="border-radius: 1rem">
+                <div class="card-body p-5 text-center">
+                  <h3 class="mb-3">Tu información</h3>
                 <p>
                     <strong>Id</strong>: <%=user._id %> <br>
                     <strong>E-mail</strong>: <%=user.email %> <br>
                     <strong>Password</strong>: <%=user.password %> <br>
                     <strong>ROL</strong>: <%=user.rol %>
                 </p>
+          
 
-                <button onclick="volver();" class="btn btn-success mt-4">Aceptar</button>
-
+                <div class="d-grid gap-2">   
+                    <a href="/panel" class="btn btn-primary">Volver</a> 
             </div>
-        </div> 
-    
-        </br>
-
+        </div>     
+    </div> 
+</div> 
+</div> 
     </div>
-
+    </section>
 </body>
-
-<script>
-    function volver(){
-        history.go(-1);
-    }
-</script>
-
 <script>
     //para el spiner y la pantalla de carga
     window.onload = function () {
