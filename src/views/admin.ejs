@@ -1,74 +1,18 @@
 <!DOCTYPE html>
     <html lang="en">
-    
-
 <head>
         <meta charset="utf-8" />
-        <title>sancode</title>
+        <title>ADMIN</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="sancode | Software Argentina" name="description" />
- 
-
         <%- include('partials/head') %>
   </head>
-
   <body id="bodyId" class="esconder">
     <%- include('partials/spinner') %>
-
-
-                
-
-            <div class="content-page">
-                <div class="content">               
-       
-                    <div class="container-fluid">
-                        <!-- start page title -->
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="page-title-box">
-                                   
-                                    <h4 class="page-title">Principal</h4>
-                                </div>
-                            </div>
-                        </div>  
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="dropdown float-right">                                  
-                            
-                                        </div>
-                                        <h4 class="header-title mb-2">Actividad Reciente</h4>
-
-                                        <div data-simplebar style="max-height: 800px;">
-                                            <div class="timeline-alt pb-0">
-                                               
-                                               
-                                              <% for(var i = 0; i<actividadesRecientesobj.length; i++){  %>           
-                                                <div class="timeline-item">
-                                                    <i class="mdi 
-                                                    <%=actividadesRecientesobj[i].icono%> 
-                                                    <%=actividadesRecientesobj[i].iconoActividadColor%>  
-                                                    <%=actividadesRecientesobj[i].textoActividadColor%>  
-                                                    timeline-icon"></i>
-
-                                                    <div class="timeline-item-info">
-                                                        <a href="#" class="text-info font-weight-bold mb-1 d-block"><%=actividadesRecientesobj[i].asunto%></a>
-                                                        <small><%=actividadesRecientesobj[i].responsable%> <%=actividadesRecientesobj[i].descripcion%></small>
-                                                        <p class="mb-0 pb-2">
-                                                            <small class="text-muted"><%=actividadesRecientesobj[i].createdAt.toLocaleDateString()%></small>
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                             <%}%> 
-
-                                            </div>                                     
-                                        </div> 
-                                    </div>                       
-                            </div>  
-                        </div>         
-                    </div>      
-
-         
-                                    <table id="basic-datatable" class="table table-striped dt-responsive nowrap w-100">
+    <%- include('partials/leftBarAdmin') %>  
+        <div class="container py-5 h-100">
+          <div class="row py-3 px-3 d-flex justify-content-center align-items-center h-100 card shadow-2-strong"  style="border-radius: 1rem">
+                                   <table id="usuarios" class="table table-striped" style="width:100%">
                                         <thead>
                                             <tr>
                                                 <th>N°</th>
@@ -78,23 +22,19 @@
                                             </tr>
                                         </thead>    
                                         <tbody>
-                                            <% for(var i = 0; i<users.length; i++){  %>                 
-                                                
+                                            <% for(var i = 0; i<users.length; i++){  %>  
                                                 <tr>
                                                     <td><%= i +1 %> </td>
                                                     <td><%=users[i].email %> </td>
                                                     <td><%=users[i].password %> </td>
                                                     <td><%=users[i].rol %> </td>
-                                                </tr>          
-                                                
+                                                </tr>   
                                                 <%}%> 
                                             </tbody>       
-                                        </table>       
-                        </div>
-    
-            </div>
-        </div> 
+                                        </table>   
+                                        </div> 
+                                    </div>     
     </body>
-
 </html>
 <%- include('partials/postFooter') %>
+<%- include('partials/postFooterAdmin') %>
