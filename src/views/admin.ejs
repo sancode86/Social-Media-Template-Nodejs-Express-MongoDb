@@ -2,16 +2,30 @@
     <html lang="en">
 <head>
         <meta charset="utf-8" />
-        <title>ADMIN</title>
+        <title>Admin</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="sancode | Software Argentina" name="description" />
         <%- include('partials/head') %>
   </head>  
 <style>
+.botonesNav{
+  text-align: left;
+}
+ 
+  .contenidoAdmin{   
+    text-align: center;
+    
+  }
+  hr{
+    margin: 15px;
+  }
+  .logoAdmin{
+    margin: 15px;
+  }
 .sidebar {
   margin: 0;
   padding: 0;
-  width: 200px;
+  width: 150px;
   background-color: #f1f1f1;
   position: fixed;
   height: 100%;
@@ -24,7 +38,7 @@
   text-decoration: none;
 } 
 .sidebar a.active {
-  background-color: #04AA6D;
+  background-color: #0d6efd;
   color: white;
 }
 .sidebar a:hover:not(.active) {
