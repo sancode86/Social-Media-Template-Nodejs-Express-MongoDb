@@ -265,14 +265,14 @@ module.exports = (app, passport) => {
   //     service: "gmail",
   //     secure: false,
   //     auth: {
-  //       user: "laputaquelospario@gmail.com",
+  //       user: "123@gmail.com",
   //       pass: "",
   //     },
   //   });
 
   //   const info = await transporter.sendMail({
   //     from: "'App Instrumentacion'",
-  //     to: "laputaquelospario@gmail.com",
+  //     to: "123@gmail.com",
   //     subject: "Mensaje Sistema",
   //     html: contentHTML,
   //   });
@@ -300,7 +300,7 @@ module.exports = (app, passport) => {
       service: "gmail",
       secure: false,
       auth: {
-        user: "laputaquelospario@gmail.com",
+        user: "123@gmail.com",
         pass: "",
       },
     });
@@ -332,9 +332,9 @@ module.exports = (app, passport) => {
   });
 
   app.get("/login", async (req, res) => {
-    const empresaDatos = await empresa.find();
+    // const empresaDatos = await empresa.find();
     res.render("login", {
-      empresaDatos,
+      // empresaDatos,
       message: req.flash("loginMessage"),
     });
   });
@@ -422,7 +422,7 @@ module.exports = (app, passport) => {
   app.get("/admin", isAdmin, async (req, res) => {
     const users = await usuarios.find();
     const tasks = await Task.find();
-    const empresaDatos = await empresa.find();
+    // const empresaDatos = await empresa.find();
     const actividadesRecientesobj = await actividadesRecientes
       .find({})
       .sort({ _id: -1 });
@@ -437,7 +437,7 @@ module.exports = (app, passport) => {
       user: req.user,
       users,
       tasks,
-      empresaDatos,
+      // empresaDatos,
       actividadesRecientesobj,
     });
   });
