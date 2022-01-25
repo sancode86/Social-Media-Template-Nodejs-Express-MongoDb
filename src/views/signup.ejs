@@ -24,12 +24,12 @@
                                       <%= message %>   
                                       </div>
                                   <% }%> 
-                                  <form action="/login" method="post" class="text-center">
+                              
                                     <div class="mb-3">
                                       <input
                                         class="form-control"
                                         type="text"
-                                        name="nombre"
+                                        name="nombreUsuario"
                                         placeholder="Nombre"
                                         required
                                       />
@@ -38,7 +38,7 @@
                                       <input
                                         class="form-control"
                                         type="text"
-                                        name="apellido"
+                                        name="apellidoUsuario"
                                         placeholder="Apellido"
                                         required
                                       />
@@ -56,7 +56,7 @@
                                       <input
                                         class="form-control"
                                         type="text"
-                                        name="descripcion"
+                                        name="descripcionUsuario"
                                         placeholder="Descripcion"
                                         required
                                       />
@@ -84,13 +84,13 @@
                                     <hr class="my-4" />        
                                     <a href="/login" class="btn btn-outline-primary">¿Ya tenés cuenta?</a>             
                                     <a href="/" class="btn btn-outline-primary">Inicio</a>
-                                  </form>
+                                  </div>
                                 </div>
                               </div>
                             </div>
                           </div>
-                        </div>
-                      </section>
+                        </section>
+                      </form>
 </body>
 </html>
 <%- include('partials/postFooter') %>
