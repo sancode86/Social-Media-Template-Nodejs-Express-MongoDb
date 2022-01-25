@@ -12,6 +12,13 @@
     <body id="bodyId" class="esconder">
         <%- include('partials/spinner') %>  
         <%- include('partials/navbarLogued') %>
+        <section class="vh-100 p-0">
+            <div class="container p-0 h-100">
+              <div class="row d-flex justify-content-center h-100">
+                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                  <div class="card shadow-2-strong" style="border-radius: 1rem">
+                    <div class="card-body p-5 text-center">
+              
                             <form action="/agregar-articulos" method="POST" enctype="multipart/form-data">
                                                <h4>Agregar un nuevo artículo</h4>                                     
                                           
@@ -57,13 +64,13 @@
                                                                  
 
                                                                 </select>                                                                
-                                                                
+                                                                <br>
                                                                 <label>Imágen del Artículo</label>
                                                                 <br>
                                                                 <input onchange="actualizarinfoimagen(); vistapreviadelaimagen(this);" id="campoimagen" name="imagenarticulo" type="file" class="form-control btn btn-primary botonsubirimagen" accept="image/x-png,image/gif,image/jpeg">
-                                                                <br>
-                                                                <span class="font-13 text-muted">Subir imágen del articulo al servidor</span>                                                                
-                                                                <img id="vistaprevia" src="#" alt="Vista Previa imágen" style="display: none;"/>                                                                   
+                                                                <br>                                                                                                                         
+                                                                <img id="vistaprevia" src="#" alt="Vista Previa imágen" class="vistaprevia" style="display: none;"/>  
+                                                                <br>                                                                 
                                                                 <button onclick="actualizarinfoimagen()" type="submit" class="btn btn-success" id="botonagregar">
                                                                     Agregar
                                                                 </button>   
@@ -95,6 +102,12 @@
 
                                 
                     </form>  
+                </div>         
+            </div>         
+        </div>    
+    </div>  
+</div>      
+    </section>  
         <script>
         function vistapreviadelaimagen(input) {
             if (input.files && input.files[0]) {
