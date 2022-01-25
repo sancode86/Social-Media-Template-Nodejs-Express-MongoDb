@@ -2,8 +2,7 @@ const colors = require("colors");
 const nodemailer = require("nodemailer");
 const usuarios = require("../app/models/user");
 const articulos = require("../app/models/articulos");
-const Task = require("../app/models/task");
-const set = require("../app/models/set");
+// const Task = require("../app/models/task");
 const empresa = require("../app/models/datosEmpresa");
 const actividadesRecientes = require("../app/models/actividadesRecientes");
 // Lo necesito para poder hace el updateMany:
@@ -390,11 +389,9 @@ module.exports = (app, passport) => {
     return res.redirect("/panel");
   });
 
-  app.get("/profile", isLoggedIn, async (req, res) => {
-    const tasks = await Task.find();
+  app.get("/profile", isLoggedIn, async (req, res) => {  
     res.render("profile", {
       user: req.user,
-      tasks,
     });
   });
 
@@ -421,7 +418,6 @@ module.exports = (app, passport) => {
   //Verifica si es administrador antes de redireccionar al panel admin
   app.get("/admin", isAdmin, async (req, res) => {
     const users = await usuarios.find();
-    const tasks = await Task.find();
     // const empresaDatos = await empresa.find();
     const actividadesRecientesobj = await actividadesRecientes
       .find({})
@@ -435,8 +431,7 @@ module.exports = (app, passport) => {
     //console.log(users);
     res.render("admin", {
       user: req.user,
-      users,
-      tasks,
+      users,   
       // empresaDatos,
       actividadesRecientesobj,
     });

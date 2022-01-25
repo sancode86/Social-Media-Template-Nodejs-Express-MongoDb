@@ -109,12 +109,12 @@
                                                     <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label>Código</label>
-                                                                <input readonly required onkeyup="SincractividadesRecientes()" type="text" name="codigoArticulo" class="form-control" data-toggle="input-mask" id="campocodigo" value="<%=articulosobj.codigoArticulo %>">
+                                                                <input readonly required onkeyup="SincractividadesRecientes()" type="text" name="titulo" class="form-control" data-toggle="input-mask" id="campocodigo" value="<%=articulosobj.titulo %>">
                                                                 <span class="font-13 text-muted">Ejemplo: 5020030B</span>
                                                             </div>
                                                             <div class="form-group">
-                                                                <label>Nombre</label>
-                                                                <input required onkeyup="SincractividadesRecientes()" type="text" name="nombre" class="form-control" data-toggle="input-mask" id="camponombre" value="<%=articulosobj.nombre %>">
+                                                                <label>descripcion</label>
+                                                                <input required onkeyup="SincractividadesRecientes()" type="text" name="descripcion" class="form-control" data-toggle="input-mask" id="campodescripcion" value="<%=articulosobj.descripcion %>">
                                                                 <span class="font-13 text-muted">Ejemplo: Tornillo Drywall</span>
                                                             </div>
                                                             <div class="form-group">
@@ -433,7 +433,7 @@
                                                         <input type="text" name="iconoActividadColor" class="form-control" data-toggle="input-mask" value="bg-info-lighten">
                                                         <input type="text" name="textoActividadColor" class="form-control" data-toggle="input-mask" value="text-info">
                                                         <input type="text" name="asunto" class="form-control" data-toggle="input-mask" value="Un Artículo fué modificado">
-                                                        <input type="text" name="descripcion" class="form-control" data-toggle="input-mask" id="campocodigomasnombre">  
+                                                        <input type="text" name="descripcion" class="form-control" data-toggle="input-mask" id="campocodigomasdescripcion">  
                                                         
                                                  </div>                                                        
                                                        
@@ -500,7 +500,7 @@
             //     codigoingresado = document.getElementById("campocodigo").value;                
 
             //   for(var i = 0; i< articulosobj.length; i++){   
-            //         if (codigoingresado == articulosobj[i].codigoArticulo) {
+            //         if (codigoingresado == articulosobj[i].titulo) {
             //             document.getElementById("botonagregar").disabled = true;                        
             //         }else{
             //             document.getElementById("botonagregar").disabled = false;
@@ -511,10 +511,10 @@
             function SincractividadesRecientes()
             {
               var CampoCodigo = document.getElementById('campocodigo');
-              var CampoNombre = document.getElementById('camponombre');
-              var CampoCodigoMasNombre = document.getElementById('campocodigomasnombre');
+              var Campodescripcion = document.getElementById('campodescripcion');
+              var CampoCodigoMasdescripcion = document.getElementById('campocodigomasdescripcion');
 
-              CampoCodigoMasNombre.value = "modificó el artículo Cod.: " + CampoCodigo.value + " " + "Nombre: " + CampoNombre.value;
+              CampoCodigoMasdescripcion.value = "modificó el artículo Cod.: " + CampoCodigo.value + " " + "descripcion: " + Campodescripcion.value;
             }
 
             function actualizarinfoimagen(){   

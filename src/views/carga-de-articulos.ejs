@@ -20,52 +20,30 @@
                     <div class="card-body p-5 text-center">
               
                             <form action="/agregar-articulos" method="POST" enctype="multipart/form-data">
-                                               <h4>Agregar un nuevo artículo</h4>                                     
+                                               <h4>Crear Post</h4>                                     
                                           
                                                             <div class="form-group">
-                                                                <label>Código</label>
-                                                                <input required onkeyup="SincractividadesRecientes()" type="text" name="codigoArticulo" class="form-control" id="campocodigo" >
-                                                                <span class="font-13 text-muted">Ejemplo: asd</span>
-                                                            </div>
-                                                            <div class="form-group">
                                                                 <label>Nombre</label>
-                                                                <input required onkeyup="SincractividadesRecientes()" type="text" name="nombre" class="form-control" id="camponombre" >
-                                                                <span class="font-13 text-muted">Ejemplo: qwe</span>
+                                                                <input required onkeyup="SincractividadesRecientes()" type="text" name="titulo" class="form-control" id="campocodigo" >
+                                                                <!-- <span class="font-13 text-muted">Ejemplo: 123</span> -->
                                                             </div>
                                                             <div class="form-group">
-                                                                <label>Medida</label>
-                                                                <input type="text" name="medida" class="form-control" 
-                                                                value="0" maxlength="15" 
-                                                                onkeydown="validateNumber(event);">                        
-                                                                
-                                                                <br>
-                                                                <select name="medidaUnidad" class="form-control">
-                                                                    <option disabled selected>Seleccionar unidad</option>                                                                    
-                                                                    <option value="-">Sin especificar</option>
-                                                                    <optgroup label="Longitud">                                                               
-                                                                        <option value="Decímetro">Decímetro</option>
-                                                                        <option value="Metro">Metro</option>
-                                                                        <option value="Centímetro">Centímetro</option>
-                                                                        <option value="Milímetro">Milímetro</option>
-                                                                        <option value="Micrómetro">Micrómetro</option>
-                                                                                                                               
-                                                                    </optgroup>                                                                    
-                                                                    <optgroup label="Superficie">                                                             
-                                                                        <option value="Decímetro²">Decímetro²</option>
-                                                                        <option value="Metro²">Metro²</option>
-                                                                        <option value="Centímetro²">Centímetro²</option>                                                                     
-                                                                        <option value="Milímetro²">Milímetro²</option>                                                                    
-                                                                    </optgroup>
-                                                                    <optgroup label="Volumen">                                                           
-                                                                        <option value="Metro³">Metro³</option>
-                                                                        <option value="Centímetro³">Centímetro³</option>
-                                                                        <option value="Milímetro³">Milímetro³</option>                                                                                                                         
-                                                                    </optgroup>
-                                                                 
-
+                                                                <label>Descripcion</label>
+                                                                <input required onkeyup="SincractividadesRecientes()" type="text" name="descripcion" class="form-control" id="campodescripcion" >
+                                                   
+                                                            </div>
+                                                            <br>
+                                                            <div class="form-group">                                          
+                                                                <select name="tipoPost" class="form-control">
+                                                                    <option disabled selected>Seleccionar</option> 
+                                                                    <optgroup label="Tipo">                                                               
+                                                                        <option value="Normal">Normal</option>
+                                                                        <option value="Especial">Especial</option>
+                                                                        <option value="Único">Único</option>         
+                                                                    </optgroup> 
                                                                 </select>                                                                
                                                                 <br>
-                                                                <label>Imágen del Artículo</label>
+                                                                <label>Imágen del Post</label>
                                                                 <br>
                                                                 <input onchange="actualizarinfoimagen(); vistapreviadelaimagen(this);" id="campoimagen" name="imagenarticulo" type="file" class="form-control btn btn-primary botonsubirimagen" accept="image/x-png,image/gif,image/jpeg">
                                                                 <br>                                                                                                                         
@@ -94,8 +72,8 @@
                                                         <input type="text" name="icono" class="form-control" value="mdi-directions">
                                                         <input type="text" name="iconoActividadColor" class="form-control" value="bg-info-lighten">
                                                         <input type="text" name="textoActividadColor" class="form-control" value="text-info">
-                                                        <input type="text" name="asunto" class="form-control" value="Nuevo Artículo Cargado">
-                                                        <input type="text" name="descripcion" class="form-control" id="campocodigomasnombre">  
+                                                        <input type="text" name="asunto" class="form-control" value="Nuevo Post Cargado">
+                                                        <input type="text" name="descripcionActividad" class="form-control" id="campocodigomasdescripcion">  
                                                         
                                                  </div>                                                        
                                                        
@@ -129,10 +107,10 @@
             function SincractividadesRecientes()
             {
               var CampoCodigo = document.getElementById('campocodigo');
-              var CampoNombre = document.getElementById('camponombre');
-              var CampoCodigoMasNombre = document.getElementById('campocodigomasnombre');
+              var Campodescripcion = document.getElementById('campodescripcion');
+              var CampoCodigoMasdescripcion = document.getElementById('campocodigomasdescripcion');
 
-              CampoCodigoMasNombre.value = "creó el artículo Cod.: " + CampoCodigo.value + " " + "Nombre: " + CampoNombre.value;
+              CampoCodigoMasdescripcion.value = "creó el artículo Cod.: " + CampoCodigo.value + " " + "descripcion: " + Campodescripcion.value;
             }
 
             function actualizarinfoimagen(){   

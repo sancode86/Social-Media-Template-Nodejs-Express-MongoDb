@@ -10,7 +10,7 @@ const actividadesRecientesSchema = new Schema({
     textoActividadColor: String,
 
     asunto: String,
-    descripcion: String,
+    descripcionActividad: String,
 
     createdAt: {
         type: Date,
