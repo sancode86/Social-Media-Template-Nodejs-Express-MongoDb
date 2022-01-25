@@ -5,3 +5,19 @@
     border-radius: 15px;
     border: 1px solid #ced4da;
 }
+.navbar-collapse {
+    flex-basis: 100%;
+    flex-grow: 1;
+    align-items: center;
+    text-align: center !important;
+    right: 80px !important;
+    position: fixed;
+}
+
+.dropdown-menu {  
+    margin-left: -13px !important;
+}
+
+.navbar-brand { 
+    padding-left: 30px !important;
+}

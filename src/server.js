@@ -73,14 +73,19 @@ app.use(express.static(path.join(__dirname, "public")));
 
 //Listen
 app.listen(app.get("port"), () => {
-  console.log(colors.green("Server Start"));
-  console.log("sancode");
-  console.log("---------------------------------------");
+  console.log(colors.green("Server Start 😃")); 
   console.log("Nombre Equipo:", os.hostname());
   console.log("Sistema Operativo:", os.type());
-  console.log("---------------------------------------");
+  console.log("-------------------------------------------------------"); 
+  console.log("                                    __     ____  _____");
+  console.log("   _________ _____  _________  ____/ /__  ( __ )/ ___/");
+  console.log("  / ___/ __ `/ __ \\/ ___/ __ \\/ __  / _ \\/ __  / __ \\ ");
+  console.log(" (__  ) /_/ / / / / /__/ /_/ / /_/ /  __/ /_/ / /_/ / ");
+  console.log("/____/\\__,_/_/ /_/\\___/\\____/\\__,_/\\___/\\____/\\____/  ");
+  console.log("");                
+  console.log("------------https://github.com/sancode86---------------");                                     
+  console.log("");
   console.log("Fecha Inicio:", tiempo.toLocaleDateString("es-AR"));
   console.log("Hora Inicio:", tiempo.toLocaleTimeString());
-
   console.log(colors.green("Server on port"), app.get("port"));
 });
