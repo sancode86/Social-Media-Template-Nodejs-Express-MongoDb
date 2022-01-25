@@ -6,13 +6,13 @@
     <title>sancode</title>    
     <%- include('partials/head') %>
 </head>
-<body id="bodyId" class="esconder">
+<body id="bodyId" class="esconder">    
     <%- include('partials/spinner') %>
-            <h7>Home!</h7>   </br>
-    
-<button onclick="location.replace('/login')">Login</button>
-<button onclick="location.replace('/signup')">Register</button>
-
+    <%- include('partials/navbar') %>
+    <section class="vh-100">
+        <div class="container py-5 h-100 text-center">
+           <h1>Home</h1>
+    </section>
 </body>
 </html>
 <%- include('partials/postFooter') %>
