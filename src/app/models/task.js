@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const TaskSchema = new Schema({
 title: String,
-description: String,
+descriptionTask: String,
 valor: Number,
 createdAt: {
     type: Date,

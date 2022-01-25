@@ -11,7 +11,7 @@
 <body id="bodyId" class="esconder">
     <%- include('partials/spinner') %>
     
-    <form action="/signup" method="post" onchange="register()" onkeypress="register()" onkeyup="register()">
+
       <section class="vh-100" style="background-color: #508bfc">
                         <div class="container py-5 h-100">
                           <div class="row d-flex justify-content-center align-items-center h-100">
@@ -24,7 +24,7 @@
                                       <%= message %>   
                                       </div>
                                   <% }%> 
-                              
+                        <form action="/signup" method="post">         
                                     <div class="mb-3">
                                       <input
                                         class="form-control"
@@ -79,8 +79,10 @@
                                         class="btn btn-primary"
                                         >
                                         Aceptar
-                                      </button>
+                                      </button>                                      
                                   </div>
+                         </form>
+
                                     <hr class="my-4" />        
                                     <a href="/login" class="btn btn-outline-primary">¿Ya tenés cuenta?</a>             
                                     <a href="/" class="btn btn-outline-primary">Inicio</a>
@@ -90,7 +92,6 @@
                             </div>
                           </div>
                         </section>
-                      </form>
 </body>
 </html>
 <%- include('partials/postFooter') %>
