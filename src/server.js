@@ -68,7 +68,7 @@ app.use(
 //Routes
 require("./app/routes")(app, passport);
 
-//Static Files
+//Archivos estaticos
 app.use(express.static(path.join(__dirname, "public")));
 
 //Listen

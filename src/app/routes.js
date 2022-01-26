@@ -2,8 +2,9 @@ const colors = require("colors");
 const nodemailer = require("nodemailer");
 const usuarios = require("../app/models/user");
 const articulos = require("../app/models/articulos");
-// const Task = require("../app/models/task");
+// datosEmpresa podria ser para hacer algo CUSTOM estilo BRAND de ser necesario
 const empresa = require("../app/models/datosEmpresa");
+// actividadesRecientes funciona perfecto, pero no esta implementado en este repo
 const actividadesRecientes = require("../app/models/actividadesRecientes");
 // Lo necesito para poder hace el updateMany:
 // var bodyParser = require("body-parser");
@@ -12,10 +13,10 @@ const mongoose = require("mongoose");
 // var ObjectId = mongoose.Types.ObjectId;
 module.exports = (app, passport) => {
   // #########################################################################################
-  //Rutas DASHBOARD ó RESUMENES
+  //Rutas GENERALES
   // #########################################################################################
 
-  //Rutas Dashboard Analisis Informacion Consultas varias
+
   app.get("/panel", isLoggedIn, async (req, res) => {
     const empresaDatos = await empresa.find();
     let user_id = req.user.id;
@@ -71,7 +72,7 @@ module.exports = (app, passport) => {
       empresaDatos,
     });
   });
-  // Para cambiar el estado habilitado de un articulo
+  // Para cambiar el estado habilitado de un post
   app.get("/estado-post/:id", async (req, res) => {
     const { id } = req.params;
     const articulosobj = await articulos.findById(id);
@@ -79,7 +80,7 @@ module.exports = (app, passport) => {
     await articulosobj.save();
     res.redirect("/panel");
   });
-  //Editar un articulo
+  //Editar un post
   app.get("/editar-post/:id", isLoggedIn, async (req, res) => {
     const { id } = req.params;
     const articulosobj = await articulos.findById(id);
@@ -88,7 +89,6 @@ module.exports = (app, passport) => {
       articulosobj,
     });
   });
-
   app.post("/editar-post/:id", isLoggedIn, async (req, res) => {
     const { id } = req.params;
     await articulos.updateOne({ _id: id }, req.body);
@@ -96,8 +96,7 @@ module.exports = (app, passport) => {
     await actividadesRecientesobj.save();
     return res.redirect("/panel");
   });
-
-  //Rutas Consulta de Articulos
+  //Rutas Consulta de posts
   app.get("/mis-posts", isLoggedIn, async (req, res) => {
     const empresaDatos = await empresa.find(); 
     let user_id = req.user.id;
@@ -133,7 +132,7 @@ module.exports = (app, passport) => {
     }
   );
 
-  //Para poder hacer POST y volver a la misma página
+  //Para poder hacer POST y volver a la misma página (TEST)
   app.get("/volver", isLoggedIn, async (req, res) => {
     res.render("volver", {
       user: req.user,
@@ -141,7 +140,7 @@ module.exports = (app, passport) => {
   });
 
   // // #########################################################################################
-  // //Enviar mail consulta
+  // //Enviar mail consulta o a un usuario
   // // #########################################################################################
 
   app.post("/enviar-consulta", async (req, res) => {

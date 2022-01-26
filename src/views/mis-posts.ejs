@@ -2,7 +2,7 @@
 <html lang="en">
    <head>
       <meta charset="utf-8" />
-      <title>Consulta Artículos | app</title>
+      <title>Mis Posts detalles | sancode86</title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta content="sancode86 | Software Argentina" name="description" />
       <meta content="sancode86" name="author" />
@@ -29,9 +29,6 @@
       <br>
       <div class="content-page">
          <div class="content">
-           
- 
-
 
             <div class="container-fluid">          
                <div id="previewImage" style="display: none;"></div>
@@ -42,7 +39,7 @@
                            <ul class="nav nav-tabs nav-bordered mb-3">
                               <li class="nav-item">
                                  <a href="#buttons-table-general" data-toggle="tab" aria-expanded="false" class="nav-link active">
-                                 Vista General
+                                 General
                                  </a>
                               </li>                             
                            </ul>                                                   
@@ -91,125 +88,7 @@
       </div>   
       </div>
    </body>
-   <%- include('partials/postFooter') %>
-   <script>
-      // // tipos de articulos en la base de datos
-      // var cantprodtermdato = document.getElementById('cantprodterm').innerHTML;
-      // var cantprodsemidato = document.getElementById('cantprodsemi').innerHTML;
-      // var cantprodmatpridato = document.getElementById('cantprodmatpri').innerHTML;
-      // var cantprodsinespdato = document.getElementById('cantprodsinesp').innerHTML;           
-      
-      // var ctx = document.getElementById('graficotiposdearticulo').getContext('2d');
-      // var tiposdeart = new Chart(ctx, {
-      //     type: 'doughnut',
-      //     data: {
-      //         labels: ['Sin especificar', 'Producto B', 'Producto C', 'Producto A'],
-      //         datasets: [{
-      //             label: '# Tipos de Productos',
-      //             data: [cantprodsinespdato, cantprodsemidato, cantprodmatpridato, cantprodtermdato],
-                  
-      //             backgroundColor: [
-      //                 'rgba(255, 99, 132, 0.2)',
-      //                 'rgba(54, 162, 235, 0.2)',
-      //                 'rgba(255, 206, 86, 0.2)',
-      //                 'rgba(75, 192, 192, 0.2)'
-                   
-      //             ],
-      //             borderColor: [
-      //                 'rgba(255, 99, 132, 1)',
-      //                 'rgba(54, 162, 235, 1)',
-      //                 'rgba(255, 206, 86, 1)',
-      //                 'rgba(75, 192, 192, 1)'
-      //             ],
-      //             borderWidth: 1
-      //         }]
-      //     },
-      // });        
-      
-      // // articulos habilitados
-      //             var canthabdato = document.getElementById('canthab').innerHTML;
-      //             var cantdeshabdato = document.getElementById('cantdeshab').innerHTML;
-                     
-      
-      //             var ctx = document.getElementById('graficohab').getContext('2d');
-      //             var canthab = new Chart(ctx, {
-      //                 type: 'doughnut',
-      //                 data: {
-      //                     labels: ['Habilitados', 'Deshabilitados'],
-      //                     datasets: [{
-      //                         label: '# Artículos Habilitados',
-      //                         data: [canthabdato, cantdeshabdato],
-                              
-      //                         backgroundColor: [
-      //                             'rgba(75, 192, 192, 0.2)',
-      //                             'rgba(255, 99, 132, 0.2)'
-                          
-                              
-      //                         ],
-      //                         borderColor: [
-      //                             'rgba(75, 192, 192, 1)',
-      //                             'rgba(255, 99, 132, 1)'
-                        
-      //                         ],
-      //                         borderWidth: 1
-      //                     }]
-      //                 },
-
-      //             });         
-      
-      // // convertir a archivo de excel
-      //     function exportTableToExcel(tableID, filename = ''){
-      //             var downloadLink;
-      //             var dataType = 'application/vnd.ms-excel';
-      //             var tableSelect = document.getElementById("datatable-buttons");
-      //             var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
-                  
-      //             // Specify file name
-      //             filename = filename?filename+'.xls':'excel_data.xls';
-                  
-      //             // Create download link element
-      //             downloadLink = document.createElement("a");
-                  
-      //             document.body.appendChild(downloadLink);
-                  
-      //             if(navigator.msSaveOrOpenBlob){
-      //                 var blob = new Blob(['\ufeff', tableHTML], {
-      //                     type: dataType
-      //                 });
-      //                 navigator.msSaveOrOpenBlob( blob, filename);
-      //             }else{
-      //                 // Create a link to the file
-      //                 downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
-                  
-      //                 // Setting the file name
-      //                 downloadLink.download = filename;
-                      
-      //                 //triggering the function
-      //                 downloadLink.click();
-      //             }
-      //     }
-      
-      //     $(document).ready(function(){
-              
-      //         var element = $("#datatable-buttons"); // global variable
-      //         var getCanvas; // global variable
-              
-      //         $("#btn-Convert-Html2Image").on('click', function () {
-      
-      //                 html2canvas(element, {
-      //                 onrendered: function (canvas) {
-      //                     $("#previewImage").append(canvas);
-      //                         getCanvas = canvas;                
-                              
-      //                         var imgageData = getCanvas.toDataURL("image/png");
-      //                             // Now browser starts downloading it instead of just showing it
-      //                             var newData = imgageData.replace(/^data:image\/png/, "data:application/octet-stream");
-      //                             $("#btn-Convert-Html2Image").attr("download", "sancode86-imagen-consulta.png").attr("href", newData);                
-      //                         }            
-      //                     });    
-      //                 });
-      //             });
-   </script>
+   <%- include('partials/postFooter') %>  
 
 
 </html>

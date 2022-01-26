@@ -36,7 +36,7 @@ module.exports = function (passport) {
           } else {
             var newUser = new User();
             newUser.email = email;
-
+            //info extra del usuario desde el formulario
             newUser.nombreUsuario = req.body.nombreUsuario;
             newUser.apellidoUsuario = req.body.apellidoUsuario;
             newUser.descripcionUsuario = req.body.descripcionUsuario;
