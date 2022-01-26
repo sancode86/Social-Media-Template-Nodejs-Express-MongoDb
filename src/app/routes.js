@@ -76,7 +76,7 @@ module.exports = (app, passport) => {
     const articulosobj = await articulos.findById(id);
     articulosobj.habilitado = !articulosobj.habilitado;
     await articulosobj.save();
-    res.redirect("/mis-posts");
+    res.redirect("/panel");
   });
   //Editar un articulo
   app.get("/editar-post/:id", isLoggedIn, async (req, res) => {
@@ -93,7 +93,7 @@ module.exports = (app, passport) => {
     await articulos.updateOne({ _id: id }, req.body);
     const actividadesRecientesobj = new actividadesRecientes(req.body);
     await actividadesRecientesobj.save();
-    return res.redirect("/mis-posts");
+    return res.redirect("/panel");
   });
 
   //Rutas Consulta de Articulos
@@ -110,7 +110,7 @@ module.exports = (app, passport) => {
   app.get("/borrar-post/:id", isLoggedIn, async (req, res) => {
     const { id } = req.params;
     await articulos.deleteOne({ _id: id });
-    res.redirect("/mis-posts");
+    res.redirect("/panel");
   });
 
   app.get(

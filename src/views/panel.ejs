@@ -22,6 +22,35 @@
           Agregar
         </button>
         
+
+
+        <% for(var i = 0; i<posteos.length; i++){  %>          
+          <div class="targetaPost">
+             <img src="/uploads/<%=posteos[i].imgartUrl%>" alt="post-img" class="imagenPost" />
+             <h1><%=posteos[i].titulo%></h1>
+             <hr>
+             <p><%=posteos[i].descripcion%></p>
+             <p><%=posteos[i].tipoPost%></p>        
+                   <div class="align-items-center text-center align-self-center">
+
+                     <input type="checkbox" class="form-check-input" id="check" onchange="window.location.href='/estado-post/<%= posteos[i]._id %>'" data-switch="success" <%= posteos[i].habilitado ? 'checked':'unchecked' %> />                                                               
+                     <label class="form-check-label" for="check">
+                       Habilitar
+                      </label>                                                    
+                    </div>                                                    
+                    <br>
+            
+                <a href="/editar-post/<%=posteos[i]._id %>" class="btn btn-outline-primary"> Editar</a>                                                             
+                <a href="/borrar-post/<%=posteos[i]._id %>" class="btn btn-danger"> Borrar</a>
+          
+          </div>
+          <%}%> 
+
+
+
+
+
+
       </div>
   </section>
 

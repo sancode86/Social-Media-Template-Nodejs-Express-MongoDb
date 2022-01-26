@@ -1,6 +1,6 @@
 .vistaprevia{  
     width: 100% !important;
-    height: 200px !important;
+    height: 250px !important;
     margin-top: 25px;
     border-radius: 15px;
     border: 1px solid #ced4da;
@@ -15,7 +15,7 @@
 }
 
 .dropdown-menu {  
-    margin-left: -13px !important;
+    margin-left: -58px !important;
 }
 
 .navbar-brand { 
@@ -32,4 +32,28 @@
 .navbar:hover{
     /* -webkit-backdrop-filter: blur(6px);
     backdrop-filter: blur(6px); */
+}
+.targetaPost{
+    box-shadow: rgb(0 0 0 / 16%) 0px 1px 4px;
+    padding: 28px;
+    width: fit-content;
+    margin: auto;
+    margin-top: 15px;
+    line-height: 1;
+    border-radius: 15px;
+}
+.imagenPost{
+    width: 100% !important;
+    height: 250px !important;   
+    border-radius: 15px;
+    border: 1px solid #ced4da;
+}
+
+.dropdown-menu{
+    padding: 0;
+    min-width: 0px !important;
+}
+
+.dropdown-divider{
+    margin: 0;
 }
