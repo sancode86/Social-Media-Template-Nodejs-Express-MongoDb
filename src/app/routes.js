@@ -109,18 +109,26 @@ module.exports = (app, passport) => {
   });
 
   app.post("/agregar-articulos", isLoggedIn, async (req, res) => {
-    console.log(new articulos(req.body));
-    const articulosobj = new articulos(req.body);
-    // Te presento mi humilde error handler
+    // console.log(new articulos(req.body));
+    let user_id = req.user.id;
+
+    const articulosobj = new articulos({      
+      _id: req.body._id,
+      usuarioCreador: user_id,   
+      titulo: req.body.titulo,
+      descripcion: req.body.descripcion,
+      tipoPost: req.body.tipoPost,
+      imgartUrl: req.body.imgartUrl
+    });
+
     await articulosobj.save(function (err) {
       if (err) {
-        console.log("CARGA DE ARTICULOS --> Articulo ya existente");
+        console.log("ERROR EN CARGA");
         console.log(err);
         return res.redirect("/carga-de-articulos-ya-existe");
       } else {
-        const actividadesRecientesobj = new actividadesRecientes(req.body);
-        actividadesRecientesobj.save();
-        console.log(req.file);
+        const actividadesRecientesobj = new actividadesRecientes(req.body);        
+        actividadesRecientesobj.save();   
         res.redirect("/consulta-articulos");
       }
     });
