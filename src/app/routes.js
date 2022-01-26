@@ -115,6 +115,12 @@ module.exports = (app, passport) => {
     res.redirect("/panel");
   });
 
+  app.get("/borrar-usuario/:id", isAdmin, async (req, res) => {
+    const { id } = req.params;
+    await usuarios.deleteOne({ _id: id });
+    res.redirect("/admin");
+  });
+
   app.get(
     "/estado-post/:id",
     isLoggedIn,

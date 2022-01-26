@@ -66,7 +66,6 @@ div.content {
 </style>
   <body id="bodyId" class="esconder content">
     <%- include('partials/spinner') %>
-    <%- include('partials/navbar') %>
     <%- include('partials/leftBarAdmin') %>  
         <div class="container py-5 h-100">
           <div class="row py-3 px-3 d-flex justify-content-center align-items-center h-100 card shadow-2-strong"  style="border-radius: 1rem">
@@ -74,18 +73,27 @@ div.content {
                                         <thead>
                                             <tr>
                                                 <th>N°</th>
+                                                <th>Nombre</th>
+                                                <th>Apellido</th>
                                                 <th>E-Mail</th>
                                                 <th>Contraseña</th>
-                                                <th>Perfil/Rol</th>                
+                                                <th>Perfil/Rol</th>      
+                                                <th>Eliminar</th>            
                                             </tr>
                                         </thead>    
                                         <tbody>
                                             <% for(var i = 0; i<users.length; i++){  %>  
                                                 <tr>
                                                     <td><%= i +1 %> </td>
+                                                    <td><%=users[i].nombreUsuario %> </td>
+                                                    <td><%=users[i].apellidoUsuario %> </td>
                                                     <td><%=users[i].email %> </td>
                                                     <td><%=users[i].password %> </td>
                                                     <td><%=users[i].rol %> </td>
+                                                   
+                                                    <td>                                                       
+                                                      <a href="/borrar-usuario/<%=users[i]._id %>" class="btn btn-danger">Borrar</a>
+                                                    </td>
                                                 </tr>   
                                                 <%}%> 
                                             </tbody>       
