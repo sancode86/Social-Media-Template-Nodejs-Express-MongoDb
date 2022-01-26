@@ -11,7 +11,7 @@
     </head>
     <body id="bodyId" class="esconder">
         <%- include('partials/spinner') %>  
-        <%- include('partials/navbarLogued') %>
+        <%- include('partials/navbar') %>
         <br>
         <br>     
         <br>
@@ -23,7 +23,7 @@
                         <div class="col-12 col-md-8 col-lg-6 col-xl-5">
                             <div class="card shadow-2-strong" style="border-radius: 1rem">
                                 <div class="card-body p-5 text-center">
-                                    <form action=" /editar-articulos/<%=articulosobj._id %>" method="POST" enctype="multipart/form-data">
+                                    <form action=" /editar-post/<%=articulosobj._id %>" method="POST" enctype="multipart/form-data">
                                         <h4>Editar Post</h4>   
                                         <div class="form-group">
                                             <label>Titulo</label>

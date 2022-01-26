@@ -3,13 +3,9 @@ const bcrypt = require("bcrypt-nodejs");
 
 const userSchema = new mongoose.Schema({
   email: String,
-
   nombreUsuario: String,
-
   apellidoUsuario: String,
-
   descripcionUsuario: String,
-
   password: String,
   
   rol: {
@@ -17,8 +13,7 @@ const userSchema = new mongoose.Schema({
     default: "Basico", //No admin
   },
 
-  //Preferencias de colores y visualizacion
-
+  //Preferencias de colores y visualizacion (no lo uso aun)
   preferencia: {
     type: String,
     default: "",

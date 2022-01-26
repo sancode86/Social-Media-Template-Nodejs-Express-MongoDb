@@ -12,7 +12,7 @@
    </head>
    <body id="bodyId" class="esconder">
       <%- include('partials/spinner') %>
-      <%- include('partials/navbarLogued') %>
+      <%- include('partials/navbar') %>
 
       <br>
         <br>     
@@ -66,12 +66,12 @@
                                          
                                      
                                           <td>                                                             
-                                             <input type="checkbox" onchange="window.location.href='/estado-habilitado-art/<%= articulosobj[i]._id %>'" id="switch<%=[i]%>" data-switch="success" <%= articulosobj[i].habilitado ? 'checked':'unchecked' %> />                                                               
+                                             <input type="checkbox" onchange="window.location.href='/estado-post/<%= articulosobj[i]._id %>'" id="switch<%=[i]%>" data-switch="success" <%= articulosobj[i].habilitado ? 'checked':'unchecked' %> />                                                               
                                              <label for="switch<%=[i]%>" data-on-label="Yes" data-off-label="No" class="mb-0 d-block"></label>                                                               
                                           </td>
                                           <td class="table-action">   
-                                             <a href="/editar-articulos/<%=articulosobj[i]._id %>" class="btn btn-outline-primary"> Editar</a>                                                             
-                                             <a href="/borrar-articulo/<%=articulosobj[i]._id %>" class="btn btn-danger"> Borrar</a>
+                                             <a href="/editar-post/<%=articulosobj[i]._id %>" class="btn btn-outline-primary"> Editar</a>                                                             
+                                             <a href="/borrar-post/<%=articulosobj[i]._id %>" class="btn btn-danger"> Borrar</a>
                                           </td>
                                        </tr>
                                        <%}%> 

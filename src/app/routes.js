@@ -10,7 +10,6 @@ const actividadesRecientes = require("../app/models/actividadesRecientes");
 // Lo necesito para poder especificar un _id
 const mongoose = require("mongoose");
 // var ObjectId = mongoose.Types.ObjectId;
-
 module.exports = (app, passport) => {
   // #########################################################################################
   //Rutas DASHBOARD ó RESUMENES
@@ -19,6 +18,9 @@ module.exports = (app, passport) => {
   //Rutas Dashboard Analisis Informacion Consultas varias
   app.get("/panel", isLoggedIn, async (req, res) => {
     const empresaDatos = await empresa.find();
+    let user_id = req.user.id;
+    const posteos = await articulos.find({usuarioCreador: user_id}).sort({ _id: -1 });;
+    console.log(posteos)
     const actividadesRecientesobj = await actividadesRecientes
       .find({})
       .sort({ _id: -1 });
@@ -26,92 +28,20 @@ module.exports = (app, passport) => {
       user: req.user,
       actividadesRecientesobj,
       empresaDatos,
+      posteos
     });
   });
-  //FIN Rutas Dashboard Analisis Informacion Consultas varias
-
-  // #########################################################################################
-  //Rutas Carga de sets
-  // #########################################################################################
-
-  // app.get("/carga-de-set", isLoggedIn, async (req, res) => {
-  //   const articulosobj = await articulos.find();
-  //   const empresaDatos = await empresa.find();
-  //   return res.render("carga-de-set", {
-  //     user: req.user,
-  //     articulosobj,
-  //     empresaDatos,
-  //   });
-  // });
-
-  // app.post("/agregar-set", isLoggedIn, async (req, res) => {
-  //   console.log(new articulos(req.body));
-  //   const setObj = new set(req.body);
-  //   // Te presento mi humilde error handler
-  //   await setObj.save(function (err) {
-  //     if (err) {
-  //       console.log("CARGA DE SETS --> SET ya existente");
-  //       console.log(err);
-  //       return res.redirect("/carga-de-set-ya-existe");
-  //     } else {
-  //       const actividadesRecientesobj = new actividadesRecientes(req.body);
-  //       actividadesRecientesobj.save();
-  //       console.log(req.file);
-  //       res.redirect("/consulta-set");
-  //     }
-  //   });
-  // });
-
-  // app.get("/carga-de-set-ya-existe", isLoggedIn, async (req, res) => {
-  //   const empresaDatos = await empresa.find();
-  //   res.render("carga-de-set-ya-existe", {
-  //     user: req.user,
-  //     empresaDatos,
-  //   });
-  // });
-
-  // app.get("/consulta-set", isLoggedIn, async (req, res) => {
-  //   const empresaDatos = await empresa.find();
-  //   const articulosobj = await set.find();
-  //   return res.render("consulta-set", {
-  //     user: req.user,
-  //     articulosobj,
-  //     empresaDatos,
-  //   });
-  // });
-
-  // app.get("/borrar-set/:id", isLoggedIn, async (req, res) => {
-  //   const { id } = req.params;
-  //   await set.deleteOne({ _id: id });
-  //   res.redirect("/consulta-set");
-  // });
-
-  // app.get("/estado-habilitado-set/:id", async (req, res) => {
-  //   const { id } = req.params;
-  //   const articulosobj = await set.findById(id);
-  //   articulosobj.habilitado = !articulosobj.habilitado;
-  //   await articulosobj.save();
-  //   res.redirect("/consulta-set");
-  // });
-
-  // #########################################################################################
-  //Rutas Carga de Articulos
-  // #########################################################################################
-
-  app.get("/carga-de-articulos", isLoggedIn, async (req, res) => {
+  app.get("/crear-post", isLoggedIn, async (req, res) => {
     const articulosobj = await articulos.find();
     const empresaDatos = await empresa.find();
-    return res.render("carga-de-articulos", {
+    return res.render("crear-post", {
       user: req.user,
       articulosobj,
       empresaDatos,
     });
   });
-
-  app.post("/agregar-articulos", isLoggedIn, async (req, res) => {
-    // console.log(new articulos(req.body));
+  app.post("/crear-post", isLoggedIn, async (req, res) => {
     let user_id = req.user.id;
-
     const articulosobj = new articulos({      
       _id: req.body._id,
       usuarioCreador: user_id,   
@@ -125,72 +55,66 @@ module.exports = (app, passport) => {
       if (err) {
         console.log("ERROR EN CARGA");
         console.log(err);
-        return res.redirect("/carga-de-articulos-ya-existe");
+        return res.redirect("/upss");
       } else {
         const actividadesRecientesobj = new actividadesRecientes(req.body);        
         actividadesRecientesobj.save();   
-        res.redirect("/consulta-articulos");
+        res.redirect("/mis-posts");
       }
     });
-  });
-
-  // para redireccion del "error handler casero" a página :
-  app.get("/carga-de-articulos-ya-existe", isLoggedIn, async (req, res) => {
+  }); 
+  app.get("/upss", isLoggedIn, async (req, res) => {
     const empresaDatos = await empresa.find();
-    res.render("carga-de-articulos-ya-existe", {
+    res.render("upss", {
       user: req.user,
       empresaDatos,
     });
   });
-
   // Para cambiar el estado habilitado de un articulo
-  app.get("/estado-habilitado-art/:id", async (req, res) => {
+  app.get("/estado-post/:id", async (req, res) => {
     const { id } = req.params;
     const articulosobj = await articulos.findById(id);
     articulosobj.habilitado = !articulosobj.habilitado;
     await articulosobj.save();
-    res.redirect("/consulta-articulos");
+    res.redirect("/mis-posts");
   });
-
   //Editar un articulo
-  app.get("/editar-articulos/:id", isLoggedIn, async (req, res) => {
+  app.get("/editar-post/:id", isLoggedIn, async (req, res) => {
     const { id } = req.params;
     const articulosobj = await articulos.findById(id);
-    res.render("editar-articulos", {
+    res.render("editar-post", {
       user: req.user,
       articulosobj,
     });
   });
 
-  app.post("/editar-articulos/:id", isLoggedIn, async (req, res) => {
+  app.post("/editar-post/:id", isLoggedIn, async (req, res) => {
     const { id } = req.params;
     await articulos.updateOne({ _id: id }, req.body);
     const actividadesRecientesobj = new actividadesRecientes(req.body);
     await actividadesRecientesobj.save();
-    return res.redirect("/consulta-articulos");
+    return res.redirect("/mis-posts");
   });
 
-  //FIN Rutas Carga de Articulos
-
   //Rutas Consulta de Articulos
-  app.get("/consulta-articulos", isLoggedIn, async (req, res) => {
+  app.get("/mis-posts", isLoggedIn, async (req, res) => {
     const empresaDatos = await empresa.find();
     const articulosobj = await articulos.find();
-    return res.render("consulta-articulos", {
+    return res.render("mis-posts", {
       user: req.user,
       articulosobj,
       empresaDatos,
     });
   });
 
-  app.get("/borrar-articulo/:id", isLoggedIn, async (req, res) => {
+  app.get("/borrar-post/:id", isLoggedIn, async (req, res) => {
     const { id } = req.params;
     await articulos.deleteOne({ _id: id });
-    res.redirect("/consulta-articulos");
+    res.redirect("/mis-posts");
   });
 
   app.get(
-    "/cambiar-estado-habilitado-articulo/:id",
+    "/estado-post/:id",
     isLoggedIn,
     async (req, res) => {
       const { id } = req.params;
@@ -201,91 +125,12 @@ module.exports = (app, passport) => {
     }
   );
 
-  //FIN Rutas Consulta de Articulos
-
-  // #########################################################################################
-  //Rutas DEPOSITO
-  // #########################################################################################
-
-  // //Rutas Consulta de depositos
-  // app.get("/impresion-etiquetas", isLoggedIn, async (req, res) => {
-  //   const articulosobj = await articulos.find();
-  //   const setobj = await set.find();
-  //   const empresaDatos = await empresa.find();
-  //   return res.render("impresion-etiquetas", {
-  //     user: req.user,
-  //     setobj,
-  //     empresaDatos,
-  //     articulosobj,
-  //   });
-  // });
-
-  // // #########################################################################################
-  // //Rutas PREFERENCIAS DE USUARIO
-  // // #########################################################################################
-  // //Guardar Preferencias de colores y estilo
-  // app.post(
-  //   "/guardar-preferencias-usuario/:id",
-  //   isLoggedIn,
-  //   async (req, res) => {
-  //     const { id } = req.params;
-  //     await usuarios.updateOne({ _id: id }, req.body);
-  //     console.log(usuarios(req.body));
-  //     return res.redirect("/volver");
-  //   }
-  // );
-  // //FIN Guardar Preferencias de colores y estilo
-
   //Para poder hacer POST y volver a la misma página
   app.get("/volver", isLoggedIn, async (req, res) => {
     res.render("volver", {
       user: req.user,
     });
   });
-
-  // //ruta del o la instrumentadora o el que sea que lleva
-  // //la caja del poder
-  // app.get("/pantalla-carga-inst", isLoggedIn, async (req, res) => {
-  //   const articulosobj = await articulos.find();
-  //   const setobj = await set.find();
-  //   const empresaDatos = await empresa.find();
-  //   return res.render("pantalla-carga-inst", {
-  //     user: req.user,
-  //     articulosobj,
-  //     empresaDatos,
-  //     setobj,
-  //   });
-  // });
-
-  //ENVIAR INFO APP
-
-  // app.post("/enviar-info-app", async (req, res) => {
-  //   const { informacion } = req.body;
-
-  //   contentHTML = `
-  //     <h1>Enviado desde la APP (Sin acomodar) </h1>
-  //     <p>Informacion: ${informacion}</p></br>   
-  //     `;
-  //   console.log(contentHTML);
-
-  //   const transporter = nodemailer.createTransport({
-  //     service: "gmail",
-  //     secure: false,
-  //     auth: {
-  //       user: "123@gmail.com",
-  //       pass: "",
-  //     },
-  //   });
-
-  //   const info = await transporter.sendMail({
-  //     from: "'App Instrumentacion'",
-  //     to: "123@gmail.com",
-  //     subject: "Mensaje Sistema",
-  //     html: contentHTML,
-  //   });
-  //   console.log("mensaje enviado", info.messageId);
-  //   res.redirect("/");
-  // });
 
   // // #########################################################################################
   // //Enviar mail consulta
@@ -313,8 +158,8 @@ module.exports = (app, passport) => {
     });
 
     const info = await transporter.sendMail({
-      from: "'App Instrumentacion'",
-      to: "laputaquelospario@gmail.com",
+      from: "'App sancode86'",
+      to: "123@gmail.com",
       subject: "Mensaje Sistema",
       html: contentHTML,
     });
@@ -397,31 +242,11 @@ module.exports = (app, passport) => {
     return res.redirect("/panel");
   });
 
-  app.get("/profile", isLoggedIn, async (req, res) => {  
-    res.render("profile", {
+  app.get("/perfil", isLoggedIn, async (req, res) => {  
+    res.render("perfil", {
       user: req.user,
     });
   });
-
-  // app.get("/edit/:id", isAdmin, async (req, res) => {
-  //   const { id } = req.params;
-  //   const task = await Task.findById(id);
-  //   res.render("edit", {
-  //     task,
-  //   });
-  // });
-
-  // app.post("/edit/:id", isAdmin, async (req, res) => {
-  //   const { id } = req.params;
-  //   await Task.updateOne({ _id: id }, req.body);
-  //   res.redirect("/admin");
-  // });
-
-  // app.get("/delete/:id", isAdmin, async (req, res) => {
-  //   const { id } = req.params;
-  //   await Task.deleteOne({ _id: id });
-  //   res.redirect("/admin");
-  // });
 
   //Verifica si es administrador antes de redireccionar al panel admin
   app.get("/admin", isAdmin, async (req, res) => {
@@ -432,7 +257,7 @@ module.exports = (app, passport) => {
       .sort({ _id: -1 });
     var tiempo = new Date();
     console.log(colors.green("--------------------------"));
-    console.log(colors.green("Admin Connected"));
+    console.log(colors.green("Admin conectado!"));
     console.log(tiempo.toLocaleDateString("es-AR"));
     console.log(tiempo.toLocaleTimeString());
     console.log(colors.green("--------------------------"));
