@@ -24,10 +24,13 @@
 
       <div class="text-center">
       <h1>Posteos cargados</h1>                        
+      <a href="/panel" class="btn btn-primary">Volver</a> 
       </div>
       <br>
       <div class="content-page">
          <div class="content">
+           
+ 
 
 
             <div class="container-fluid">          
@@ -57,21 +60,21 @@
                                        </tr>
                                     </thead>
                                     <tbody>
-                                       <% for(var i = 0; i<articulosobj.length; i++){  %>          
+                                       <% for(var i = 0; i<posteos.length; i++){  %>          
                                        <tr>
-                                          <td><img src="/uploads/<%=articulosobj[i].imgartUrl%>" alt="contact-img" title="contact-img" class="rounded mr-3" height="48" /></td>
-                                          <td><%=articulosobj[i].titulo%></td>
-                                          <td><%=articulosobj[i].descripcion%></td>
-                                          <td><%=articulosobj[i].tipoPost%></td>                                 
+                                          <td><img src="/uploads/<%=posteos[i].imgartUrl%>" alt="contact-img" title="contact-img" class="rounded mr-3" height="48" /></td>
+                                          <td><%=posteos[i].titulo%></td>
+                                          <td><%=posteos[i].descripcion%></td>
+                                          <td><%=posteos[i].tipoPost%></td>                                 
                                          
                                      
                                           <td>                                                             
-                                             <input type="checkbox" onchange="window.location.href='/estado-post/<%= articulosobj[i]._id %>'" id="switch<%=[i]%>" data-switch="success" <%= articulosobj[i].habilitado ? 'checked':'unchecked' %> />                                                               
-                                             <label for="switch<%=[i]%>" data-on-label="Yes" data-off-label="No" class="mb-0 d-block"></label>                                                               
+                                             <input type="checkbox"  class="form-check-input" onchange="window.location.href='/estado-post/<%= posteos[i]._id %>'"  data-switch="success" <%= posteos[i].habilitado ? 'checked':'unchecked' %> />                                                               
+                                                        
                                           </td>
                                           <td class="table-action">   
-                                             <a href="/editar-post/<%=articulosobj[i]._id %>" class="btn btn-outline-primary"> Editar</a>                                                             
-                                             <a href="/borrar-post/<%=articulosobj[i]._id %>" class="btn btn-danger"> Borrar</a>
+                                             <a href="/editar-post/<%=posteos[i]._id %>" class="btn btn-outline-primary"> Editar</a>                                                             
+                                             <a href="/borrar-post/<%=posteos[i]._id %>" class="btn btn-danger"> Borrar</a>
                                           </td>
                                        </tr>
                                        <%}%> 

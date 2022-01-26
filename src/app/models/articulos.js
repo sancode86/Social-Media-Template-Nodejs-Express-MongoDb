@@ -31,8 +31,9 @@ const articulosSchema = new Schema({
         type: Boolean,
         default: true
     },  
-    usuarioCreador: String
-
+    usuarioCreador: String,
+    
+    usuarioCreadorNombre: String
 
 })
 

@@ -15,6 +15,8 @@
           </div>
           <% } %>
           <% if(typeof user != 'undefined') { %>
+          <div class="menuLogueado">          
+          <i class="bi bi-list-check" onclick="location.replace('/mis-posts')" style="font-size: x-large; padding-right: 15px !important;"></i>
           <li class="nav-item dropdown">
             <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="bi bi-gear"  style="font-size: x-large;"></i>
@@ -24,6 +26,7 @@
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="#" onclick="location.replace('/logout')">Cerrar Sesión</a>
             </div>
+          </div>
           <% } %>
 
         </li>      

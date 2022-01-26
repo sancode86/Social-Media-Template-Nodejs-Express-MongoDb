@@ -16,6 +16,20 @@
     <section class="vh-100">
         <div class="container py-5 h-100 text-center">
            <h1>Home</h1>
+           
+
+           <% for(var i = 0; i<articulosobj.length; i++){  %>   
+            <% if(articulosobj[i].habilitado === true){  %>         
+            <div class="targetaPost">
+                <p class="creadorPost"><%=articulosobj[i].usuarioCreadorNombre%></p>
+               <img src="/uploads/<%=articulosobj[i].imgartUrl%>" alt="post-img" class="imagenPost" />
+               <h1><%=articulosobj[i].titulo%></h1>
+               <hr>
+               <p><%=articulosobj[i].descripcion%></p>
+               <p class="tipoPostPublico"><%=articulosobj[i].tipoPost%></p>              
+            </div>
+            <%}%> 
+            <%}%> 
         </div>
     </section>
  

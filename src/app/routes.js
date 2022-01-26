@@ -45,6 +45,7 @@ module.exports = (app, passport) => {
     const articulosobj = new articulos({      
       _id: req.body._id,
       usuarioCreador: user_id,   
+      usuarioCreadorNombre: req.user.nombreUsuario + " " +  req.user.apellidoUsuario,
       titulo: req.body.titulo,
       descripcion: req.body.descripcion,
       tipoPost: req.body.tipoPost,
@@ -59,7 +60,7 @@ module.exports = (app, passport) => {
       } else {
         const actividadesRecientesobj = new actividadesRecientes(req.body);        
         actividadesRecientesobj.save();   
-        res.redirect("/mis-posts");
+        res.redirect("/panel");
       }
     });
   }); 
@@ -98,12 +99,13 @@ module.exports = (app, passport) => {
 
   //Rutas Consulta de Articulos
   app.get("/mis-posts", isLoggedIn, async (req, res) => {
-    const empresaDatos = await empresa.find();
-    const articulosobj = await articulos.find();
+    const empresaDatos = await empresa.find(); 
+    let user_id = req.user.id;
+    const posteos = await articulos.find({usuarioCreador: user_id}).sort({ _id: -1 });;
     return res.render("mis-posts", {
-      user: req.user,
-      articulosobj,
+      user: req.user,   
       empresaDatos,
+      posteos
     });
   });
 
@@ -178,8 +180,11 @@ module.exports = (app, passport) => {
 
   //Rutas de Login y Signup
 
-  app.get("/", (req, res) => {
-    res.render("index");
+  app.get("/", async (req, res) => {
+    const articulosobj = await articulos.find();
+    return res.render("index", {   
+      articulosobj,
+    });
     // res.redirect("/index");
   });
 

@@ -1,59 +1,89 @@
-.vistaprevia{  
-    width: 100% !important;
-    height: 250px !important;
-    margin-top: 25px;
-    border-radius: 15px;
-    border: 1px solid #ced4da;
+.vistaprevia {
+  width: 100% !important;
+  height: 250px !important;
+  margin-top: 25px;
+  border-radius: 15px;
+  border: 1px solid #ced4da;
 }
 .navbar-collapse {
-    flex-basis: 100%;
-    flex-grow: 1;
-    align-items: center;
-    text-align: center !important;
-    right: 80px !important;
-    position: fixed;
+  flex-basis: 100%;
+  flex-grow: 1;
+  align-items: center;
+  text-align: center !important;
+  right: 80px !important;
+  position: fixed;
 }
 
-.dropdown-menu {  
-    margin-left: -58px !important;
+.dropdown-menu {
+  margin-left: -58px !important;
 }
 
-.navbar-brand { 
-    padding-left: 30px !important;
+.navbar-brand {
+  padding-left: 30px !important;
 }
-.navbar{
-    position: fixed;
-    z-index: 1;
-    background-color: #ffffff70 !important;
-    -webkit-backdrop-filter: blur(4px);
-    backdrop-filter: blur(4px);
+.navbar {
+  position: fixed;
+  z-index: 1;
+  background-color: #ffffff70 !important;
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
 }
 
-.navbar:hover{
-    /* -webkit-backdrop-filter: blur(6px);
+.navbar:hover {
+  /* -webkit-backdrop-filter: blur(6px);
     backdrop-filter: blur(6px); */
 }
-.targetaPost{
-    box-shadow: rgb(0 0 0 / 16%) 0px 1px 4px;
-    padding: 28px;
+.targetaPost {
+  box-shadow: rgb(0 0 0 / 16%) 0px 1px 4px;
+  padding: 28px;
+  width: 500px;
+  margin: auto;
+  margin-top: 15px;
+  line-height: 1;
+  border-radius: 15px;
+}
+.imagenPost {
+  width: 100% !important;
+  height: 250px !important;
+  border-radius: 15px;
+  border: 1px solid #ced4da;
+}
+
+.dropdown-menu {
+  padding: 0;
+  min-width: 0px !important;
+}
+
+.dropdown-divider {
+  margin: 0;
+}
+.bi:hover {
+  cursor: pointer;
+}
+.menuLogueado {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+
+  align-items: center;
+}
+.tipoPostPublico{
+    position: relative;
+    top: 25px;
+    left: 380px;
+    color: white;
+    background-color: #6e6e6ec2;
     width: fit-content;
-    margin: auto;
-    margin-top: 15px;
-    line-height: 1;
-    border-radius: 15px;
+    padding: 6px;
+    border-radius: 10px;
+    font-weight: 500;    
 }
-.imagenPost{
-    width: 100% !important;
-    height: 250px !important;   
-    border-radius: 15px;
-    border: 1px solid #ced4da;
-}
-
-.dropdown-menu{
-    padding: 0;
-    min-width: 0px !important;
-}
-
-.dropdown-divider{
-    margin: 0;
+.creadorPost{
+    width: fit-content;
+    font-style: italic;
+    font-size: small;
 }
